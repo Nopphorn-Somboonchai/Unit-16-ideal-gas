@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ฟิสิกส์ ม.6: บทที่ 16 เรื่องความร้อนและแก๊ส 💨🎈</title>
+  <!-- Production Tailwind CSS build via CDN for standalone usage -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Prompt & Sarabun -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- MathJax Configuration for LaTeX -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --ink: #1e293b;
+      --muted: #64748b;
+      --paper: rgba(255, 255, 255, 0.95);
+      --line: rgba(30, 41, 59, 0.1);
+      --mint: #10b981;
+      --sky: #0ea5e9;
+      --sun: #f59e0b;
+      --coral: #ef4444;
+    }
+
+    body {
+      font-family: 'Prompt', 'Sarabun', sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(14, 165, 233, 0.08), transparent 30%),
+        linear-gradient(225deg, rgba(16, 185, 129, 0.08), transparent 35%),
+        repeating-linear-gradient(0deg, rgba(30, 41, 59, 0.02) 0 1px, transparent 1px 30px),
+        repeating-linear-gradient(90deg, rgba(30, 41, 59, 0.02) 0 1px, transparent 1px 30px),
+        #f8fafc;
+      text-rendering: optimizeLegibility;
+    }
+
+    html.exam-locked,
+    body.exam-locked {
+      overscroll-behavior-y: none;
+    }
+
+    .math-font {
+      font-family: 'Sarabun', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0369a1 100%) !important;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+      transition: all 150ms ease;
+    }
+
+    button:active {
+      transform: translateY(2px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header Banner -->
+  <header class="text-white sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div
+          class="bg-sky-500/20 text-sky-300 p-3 rounded-xl border border-sky-400/30 shadow-inner text-2xl flex items-center justify-center">
+          <i class="fa-solid fa-wind"></i>
+        </div>
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold tracking-wide text-white drop-shadow-md">ฟิสิกส์ ม.6
+            บทที่ 16 เรื่องความร้อนและแก๊ส</h1>
+          <p class="text-xs md:text-sm text-sky-200">รายวิชา ฟิสิกส์ 5 รหัสวิชา ว33205 โรงเรียนห้องสอนศึกษา
+            ในพระอุปถัมภ์ฯ</p>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center gap-2">
+        <span
+          class="bg-slate-800/60 text-sky-300 px-3 py-1.5 rounded-full text-xs font-semibold border border-slate-700">
+          <i class="fa-solid fa-graduation-cap mr-1"></i> มัธยมศึกษาปีที่ 6
+        </span>
+        <button onclick="showSection('home')"
+          class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg text-xs font-medium border border-white/10 transition flex items-center gap-1">
+          <i class="fa-solid fa-house"></i> หน้าแรก
+        </button>
+      </div>
+      <div class="w-full md:hidden flex items-center justify-between">
+        <span
+          class="bg-slate-800/80 text-sky-200 px-3 py-1.5 rounded-full text-[11px] font-semibold border border-slate-700">ว33205
+          ฟิสิกส์ 5</span>
+        <button onclick="toggleMobileMenu()"
+          class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-sm transition" aria-label="Toggle mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-slate-900/95 backdrop-blur-md">
+      <div class="max-w-6xl mx-auto px-4 py-3 grid grid-cols-2 gap-2 text-sm font-medium">
+        <button onclick="showSection('home')"
+          class="bg-white/10 hover:bg-white/20 rounded-lg py-2 transition">หน้าหลัก</button>
+        <button onclick="showSection('review')"
+          class="bg-white/10 hover:bg-white/20 rounded-lg py-2 transition">บทเรียน</button>
+        <button onclick="showSection('practice')"
+          class="bg-white/10 hover:bg-white/20 rounded-lg py-2 transition">ฝึกโจทย์</button>
+        <button onclick="showSection('exam-start')"
+          class="bg-white/10 hover:bg-white/20 rounded-lg py-2 transition">สอบเก็บคะแนน</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+
+    <!-- ==================================================== -->
+    <!-- SECTION 1: HOME / LANDING PAGE -->
+    <!-- ==================================================== -->
+    <section id="sec-home" class="space-y-8 animate-[fadeIn_0.5s_ease-out]">
+      <!-- Welcome Hero Card -->
+      <div
+        class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+
+        <!-- Decorative background elements -->
+        <div
+          class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-sky-50 rounded-full blur-3xl opacity-50 pointer-events-none">
+        </div>
+        <div
+          class="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none">
+        </div>
+
+        <div class="space-y-4 max-w-2xl relative z-10">
+          <span
+            class="bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1 rounded-full text-xs font-bold tracking-wide">
+            ฟิสิกส์ ม.6 บทที่ 16.2
+          </span>
+          <h2 class="text-2xl md:text-4xl font-extrabold text-slate-800 leading-tight">
+            แก๊สอุดมคติ <br class="hidden md:block">
+            <span class="text-sky-600 text-xl md:text-3xl font-mono mt-1 inline-block">(\( P, V, T, n, N \))</span>
+          </h2>
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+            เรียนรู้พฤติกรรมของแก๊สผ่าน <strong>แบบจำลองแก๊สอุดมคติ</strong> ศึกษาความสัมพันธ์ระหว่างความดัน ปริมาตร
+            และอุณหภูมิ ผ่านกฎของบอยล์ ชาร์ล และเก-ลูซัก นำไปสู่การคำนวณสมการสถานะ <strong>\( PV = nRT \)</strong>
+            พร้อมระบบจำลองภาพและข้อสอบอิงตามหนังสือเรียน สสวท.
+          </p>
+
+          <!-- Quick Status Indicator -->
+          <div id="latest-score-badge"
+            class="hidden bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-2 text-xs md:text-sm text-slate-600">
+              <i class="fa-solid fa-clipboard-check text-emerald-500 text-lg"></i>
+              <span>ผลสอบล่าสุดของคุณ: <strong id="lbl-last-score" class="text-slate-800">-</strong></span>
+            </div>
+            <button onclick="showLatestResultModal()"
+              class="text-sky-600 hover:text-sky-800 font-semibold text-xs flex items-center gap-1 transition">
+              <i class="fa-solid fa-eye"></i> ดูผลสอบ
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Graphic (Cylinder & Particles) -->
+        <div class="w-full md:w-72 flex justify-center relative z-10">
+          <svg class="w-56 h-56 drop-shadow-xl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="50" y="60" width="100" height="120" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="4" />
+            <!-- Piston -->
+            <rect x="46" y="50" width="108" height="12" rx="4" fill="#334155" />
+            <rect x="96" y="10" width="8" height="40" fill="#94a3b8" />
+            <circle cx="100" cy="10" r="15" fill="#ef4444" />
+            <text x="100" y="14" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle"
+              font-family="sans-serif">P</text>
+            <!-- Particles -->
+            <circle cx="80" cy="100" r="5" fill="#0ea5e9">
+              <animate attributeName="cy" values="100;160;70;100" dur="2s" repeatCount="indefinite" />
+              <animate attributeName="cx" values="80;130;60;80" dur="2.3s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="120" cy="140" r="5" fill="#0ea5e9">
+              <animate attributeName="cy" values="140;80;150;140" dur="1.8s" repeatCount="indefinite" />
+              <animate attributeName="cx" values="120;70;140;120" dur="1.9s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="90" cy="150" r="5" fill="#0ea5e9">
+              <animate attributeName="cy" values="150;90;170;150" dur="2.1s" repeatCount="indefinite" />
+              <animate attributeName="cx" values="90;120;60;90" dur="2.5s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="130" cy="90" r="5" fill="#0ea5e9">
+              <animate attributeName="cy" values="90;160;80;90" dur="1.7s" repeatCount="indefinite" />
+              <animate attributeName="cx" values="130;70;110;130" dur="2.2s" repeatCount="indefinite" />
+            </circle>
+            <!-- Pressure Gauge -->
+            <circle cx="150" cy="120" r="20" fill="#fff" stroke="#64748b" stroke-width="3" />
+            <circle cx="150" cy="120" r="14" fill="#f1f5f9" />
+            <line x1="150" y1="120" x2="160" y2="110" stroke="#ef4444" stroke-width="2" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate"
+                values="0 150 120; 30 150 120; -10 150 120; 0 150 120" dur="3s" repeatCount="indefinite" />
+            </line>
+            <!-- Volume Indicator -->
+            <path d="M 30 60 L 30 180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+            <text x="20" y="125" fill="#64748b" font-size="12" font-weight="bold" font-family="sans-serif">V</text>
+            <!-- Heat -->
+            <path d="M 80 190 Q 100 175 120 190" stroke="#f59e0b" stroke-width="3" fill="none">
+              <animate attributeName="d"
+                values="M 80 190 Q 100 175 120 190; M 80 195 Q 100 185 120 195; M 80 190 Q 100 175 120 190" dur="1s"
+                repeatCount="indefinite" />
+            </path>
+            <text x="100" y="205" fill="#f59e0b" font-size="12" font-weight="bold" text-anchor="middle"
+              font-family="sans-serif">T (Kelvin)</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Main Action Buttons -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Button 1: Review -->
+        <button onclick="showSection('review')"
+          class="group text-left bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-sky-300 hover:shadow-md transition-all duration-300 relative overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-sky-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110">
+          </div>
+          <div
+            class="w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center text-xl mb-4 relative z-10">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2 relative z-10">
+            1. ทบทวนเนื้อหา
+            <i
+              class="fa-solid fa-arrow-right text-sm text-sky-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+          </h3>
+          <p class="text-sm text-slate-500 leading-relaxed relative z-10">
+            เรียนรู้แบบจำลองแก๊สอุดมคติ กฎของแก๊ส พร้อมเครื่องจำลอง Interactive
+          </p>
+        </button>
+
+        <!-- Button 2: Practice -->
+        <button onclick="showSection('practice')"
+          class="group text-left bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 relative overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110">
+          </div>
+          <div
+            class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4 relative z-10">
+            <i class="fa-solid fa-pencil"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2 relative z-10">
+            2. ฝึกทำโจทย์
+            <i
+              class="fa-solid fa-arrow-right text-sm text-emerald-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+          </h3>
+          <p class="text-sm text-slate-500 leading-relaxed relative z-10">
+            ระบบสุ่มโจทย์แบบฝึกหัดคำนวณ \(PV=nRT\) พร้อมเฉลยวิธีทำอย่างละเอียด
+          </p>
+        </button>
+
+        <!-- Button 3: Exam -->
+        <button onclick="showSection('exam-start')"
+          class="group text-left bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all duration-300 relative overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-indigo-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110">
+          </div>
+          <div
+            class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4 relative z-10">
+            <i class="fa-solid fa-stopwatch"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2 relative z-10">
+            3. สอบเก็บคะแนน
+            <i
+              class="fa-solid fa-arrow-right text-sm text-indigo-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+          </h3>
+          <p class="text-sm text-slate-500 leading-relaxed relative z-10">
+            ทดสอบจับเวลา 10 นาที จำนวน 5 ข้อ อิงตามข้อสอบ สสวท. บันทึกผลสอบได้
+          </p>
+        </button>
+      </div>
+
+      <!-- Quick Tips Box -->
+      <div
+        class="bg-gradient-to-br from-slate-800 to-slate-900 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700 text-white space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-700 pb-4">
+          <div
+            class="text-amber-400 text-2xl flex items-center justify-center bg-slate-800 border border-slate-600 p-2.5 rounded-xl">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg text-white tracking-wide">สรุปสูตรและแนวคิดสำคัญ (Key Formulas)</h4>
+            <p class="text-sm text-slate-400">บทที่ 16.2 แก๊สอุดมคติ</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Card 1: Ideal Gas Model -->
+          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 hover:border-sky-500/50 transition">
+            <div class="text-sky-400 font-bold text-xs mb-1 uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-cube"></i> 16.2.1 แบบจำลองแก๊ส
+            </div>
+            <h5 class="font-bold text-sm mb-2 text-slate-200">แบบจำลองแก๊สอุดมคติ</h5>
+            <ul class="text-xs text-slate-400 space-y-1 pl-3 list-disc">
+              <li>โมเลกุลมีขนาดเล็กมาก (ปริมาตรเป็นศูนย์)</li>
+              <li>ไม่มีแรงยึดเหนี่ยวระหว่างโมเลกุล</li>
+              <li>เคลื่อนที่แบบสุ่มตามกฎนิวตัน</li>
+              <li>ชนแบบยืดหยุ่นสมบูรณ์</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Boyle & Charles -->
+          <div
+            class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 hover:border-emerald-500/50 transition flex flex-col justify-between">
+            <div>
+              <div class="text-emerald-400 font-bold text-xs mb-1 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-compress"></i> กฎของแก๊ส
+              </div>
+              <h5 class="font-bold text-sm mb-1 text-slate-200">กฎของบอยล์, ชาร์ล, เก-ลูซัก</h5>
+              <p class="text-xs text-slate-400 leading-relaxed mb-2">เมื่อมวล (m) หรือจำนวนโมล (n) คงตัว</p>
+            </div>
+            <div class="mt-2 pt-2 border-t border-slate-700">
+              <div
+                class="text-xs font-mono text-emerald-300 bg-slate-900/50 p-2 rounded text-center border border-slate-700">
+                \( \frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2} \)
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Ideal Gas Law -->
+          <div
+            class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 hover:border-rose-500/50 transition flex flex-col justify-between">
+            <div>
+              <div class="text-rose-400 font-bold text-xs mb-1 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-star"></i> 16.2.2 กฎแก๊สอุดมคติ
+              </div>
+              <h5 class="font-bold text-sm mb-1 text-slate-200">สมการสถานะ (State Eq.)</h5>
+              <p class="text-xs text-slate-400 leading-relaxed mb-2">ความสัมพันธ์รวมของแก๊ส (T ต้องเป็นเคลวินเสมอ)</p>
+            </div>
+            <div class="mt-2 pt-2 border-t border-slate-700 space-y-1">
+              <div
+                class="text-[11px] font-mono text-rose-300 bg-slate-900/50 p-1.5 rounded text-center border border-slate-700">
+                \( PV = nRT \)
+              </div>
+              <div
+                class="text-[11px] font-mono text-rose-300 bg-slate-900/50 p-1.5 rounded text-center border border-slate-700">
+                \( PV = NkT \)
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Moles -->
+          <div
+            class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 hover:border-amber-500/50 transition flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 font-bold text-xs mb-1 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-weight-scale"></i> ปริมาณสาร
+              </div>
+              <h5 class="font-bold text-sm mb-1 text-slate-200">จำนวนโมล (\(n\))</h5>
+              <p class="text-xs text-slate-400 leading-relaxed mb-2">มวลโมเลกุล (M) และ ค่าคงตัวอาโวกาโดร (\(N_A\))</p>
+            </div>
+            <div class="mt-2 pt-2 border-t border-slate-700">
+              <div
+                class="text-[11px] font-mono text-amber-300 bg-slate-900/50 p-2 rounded text-center border border-slate-700">
+                \( n = \frac{m}{M} = \frac{N}{N_A} \)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Constants Note -->
+        <div
+          class="text-[11px] md:text-xs text-slate-400 bg-slate-900/80 p-3 rounded-lg border border-slate-700 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 font-mono">
+          <span class="text-white font-bold font-sans flex items-center gap-1"><i
+              class="fa-solid fa-key text-amber-400"></i> ค่าคงตัว:</span>
+          <span>\( R = 8.31 \text{ J/(mol}\cdot\text{K)} \)</span>
+          <span>\( k_B = 1.38 \times 10^{-23} \text{ J/K} \)</span>
+          <span>\( N_A = 6.02 \times 10^{23} \text{ mol}^{-1} \)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- SECTION 2: REVIEW SYSTEM -->
+    <!-- ==================================================== -->
+    <section id="sec-review" class="hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800">💨 ทบทวนบทเรียน: แก๊สอุดมคติ</h2>
+          <p class="text-sm text-slate-500">เลือกหัวข้อด้านล่างเพื่อศึกษาทฤษฎีและทดลองปรับเปลี่ยนตัวแปรในระบบ Simulator
+          </p>
+        </div>
+        <button onclick="showSection('home')"
+          class="self-start sm:self-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-semibold border border-slate-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-chevron-left"></i> กลับหน้าแรก
+        </button>
+      </div>
+
+      <!-- Segment Tabs -->
+      <div class="flex flex-wrap bg-slate-100 p-1.5 rounded-xl gap-1 max-w-4xl border border-slate-200">
+        <button onclick="switchReviewTab('16-2-1')" id="btn-tab-16-2-1"
+          class="flex-1 min-w-[140px] text-center py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-200 bg-white text-sky-700 shadow-sm border border-slate-200/50">
+          1. แบบจำลองแก๊ส
+        </button>
+        <button onclick="switchReviewTab('16-2-2-laws')" id="btn-tab-16-2-2-laws"
+          class="flex-1 min-w-[140px] text-center py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-200/50">
+          2. กฎของแก๊ส (P,V,T)
+        </button>
+        <button onclick="switchReviewTab('16-2-2-ideal')" id="btn-tab-16-2-2-ideal"
+          class="flex-1 min-w-[140px] text-center py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-200/50">
+          3. สมการแก๊สอุดมคติ
+        </button>
+        <button onclick="switchReviewTab('16-2-moles')" id="btn-tab-16-2-moles"
+          class="flex-1 min-w-[140px] text-center py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-200/50">
+          4. ปริมาณสาร (โมล)
+        </button>
+      </div>
+
+      <!-- TAB 1: แบบจำลองแก๊สอุดมคติ -->
+      <div id="review-tab-16-2-1" class="space-y-6">
+        <!-- Interactive Simulator Widget -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 text-sky-600">
+            <i class="fa-solid fa-cube"></i> Simulator: แบบจำลองแก๊สอุดมคติ (Ideal Gas Model)
+          </h3>
+          <p class="text-sm text-slate-600 mb-6">
+            แบบจำลองแสดงพฤติกรรมของแก๊สอุดมคติตามข้อสมมติฐาน ทดลองเพิ่มอุณหภูมิเพื่อดูอัตราเร็วของโมเลกุลที่เพิ่มขึ้น
+            และสังเกตการชนผนังอย่างยืดหยุ่น
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Animation Box -->
+            <div
+              class="lg:col-span-7 bg-slate-900 p-6 rounded-2xl flex flex-col justify-between items-center relative min-h-[350px] border border-slate-800 shadow-inner">
+              <div class="w-full text-left text-[11px] text-slate-400 font-bold tracking-wider mb-3">
+                <i class="fa-solid fa-microscope mr-1"></i> กล่องบรรจุแก๊ส (ไม่มีแรงยึดเหนี่ยวระหว่างอนุภาค)
+              </div>
+              <div class="w-full flex-grow flex items-center justify-center">
+                <canvas id="gas-model-canvas" width="400" height="250"
+                  class="bg-slate-950 border-2 border-slate-700 rounded-lg shadow-lg w-full max-w-md"></canvas>
+              </div>
+            </div>
+
+            <!-- Controller Box -->
+            <div
+              class="lg:col-span-5 bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between space-y-4">
+              <div class="space-y-5">
+                <span
+                  class="text-xs text-slate-500 font-bold uppercase tracking-wider block border-b border-slate-200 pb-2">ควบคุมสภาวะแก๊ส:</span>
+
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-slate-700 mb-2">
+                    <span>อุณหภูมิสัมบูรณ์ (\(T\)):</span>
+                    <span id="lbl-sim1-temp" class="text-sky-600 font-bold text-sm bg-sky-100 px-2 py-0.5 rounded">300
+                      K</span>
+                  </div>
+                  <input type="range" id="sim1-slider-temp" min="50" max="1000" step="10" value="300"
+                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-sky-500">
+                  <p class="text-[10px] text-slate-500 mt-1 text-right">ส่งผลต่ออัตราเร็วเฉลี่ย (\(v \propto \sqrt{T}\))
+                  </p>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-slate-700 mb-2">
+                    <span>จำนวนโมเลกุล (\(N\)):</span>
+                    <span id="lbl-sim1-num" class="text-sky-600 font-bold text-sm bg-sky-100 px-2 py-0.5 rounded">40
+                      อนุภาค</span>
+                  </div>
+                  <input type="range" id="sim1-slider-num" min="10" max="150" step="10" value="40"
+                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-sky-500">
+                  <p class="text-[10px] text-slate-500 mt-1 text-right">ปริมาตรอนุภาคน้อยมากจนถือว่าปริมาตรเป็นศูนย์</p>
+                </div>
+              </div>
+
+              <!-- Info Box -->
+              <div class="bg-sky-50 border border-sky-100 p-4 rounded-xl space-y-2">
+                <span class="text-[11px] text-sky-800 block font-bold"><i class="fa-solid fa-circle-info mr-1"></i>
+                  ข้อสมมติฐานหลัก</span>
+                <ul class="text-xs text-sky-900 space-y-1.5 pl-4 list-disc">
+                  <li>ชนผนังแล้วสะท้อนกลับด้วยอัตราเร็วเท่าเดิม (ยืดหยุ่นสมบูรณ์)</li>
+                  <li>เคลื่อนที่เป็นเส้นตรงด้วยความเร็วคงที่ระหว่างการชน</li>
+                  <li>ขนาดของวงกลมในภาพวาดขยายใหญ่เพื่อให้มองเห็น (ในอุดมคติจะมีขนาดเป็นจุด)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
+          <h4 class="font-bold text-slate-800 text-lg border-b border-slate-100 pb-2">📖 สรุปทฤษฎี: แบบจำลองแก๊สอุดมคติ
+          </h4>
+          <p class="text-sm text-slate-600 leading-relaxed indent-8">
+            ในการศึกษาพฤติกรรมของแก๊ส นักฟิสิกส์ได้สร้าง <strong>แก๊สอุดมคติ (Ideal Gas)</strong>
+            ขึ้นมาเพื่อความสะดวกในการอธิบายและคำนวณ โดยตั้งข้อสมมติฐาน 4 ข้อ ดังนี้:
+          </p>
+          <ol
+            class="text-sm text-slate-700 space-y-2 pl-6 list-decimal bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <li>แก๊สประกอบด้วยโมเลกุลจำนวนมาก ซึ่งมีขนาดเล็กมากจนถือได้ว่า
+              <strong>ปริมาตรของโมเลกุลมีค่าเป็นศูนย์</strong> (เมื่อเทียบกับปริมาตรภาชนะ)
+            </li>
+            <li>โมเลกุลของแก๊ส <strong>ไม่มีแรงยึดเหนี่ยวระหว่างกัน</strong> (ไม่มีแรงดึงดูดหรือแรงผลัก)
+              ยกเว้นตอนที่เกิดการชนกัน</li>
+            <li>โมเลกุลเคลื่อนที่แบบสุ่ม (Random motion) ในทิศทางใดๆ อย่างไร้ระเบียบ
+              และเคลื่อนที่เป็นเส้นตรงตามกฎการเคลื่อนที่ของนิวตัน จนกว่าจะชนผนังหรือชนกันเอง</li>
+            <li>การชนของโมเลกุลกับผนังภาชนะ (หรือชนกันเอง) เป็น <strong>การชนแบบยืดหยุ่นสมบูรณ์</strong>
+              (ไม่มีการสูญเสียพลังงานจลน์รวม) และใช้เวลาในการชนน้อยมากจนถือว่าเวลาที่ชนเป็นศูนย์</li>
+          </ol>
+          <p class="text-[11px] text-slate-500 bg-amber-50 p-2 rounded-lg border border-amber-100">
+            <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-1"></i> <strong>หมายเหตุ:</strong> แก๊สจริง
+            (Real Gas) ในธรรมชาติจะมีพฤติกรรมใกล้เคียงแก๊สอุดมคติมากที่สุด เมื่ออยู่ในสภาวะ <strong>อุณหภูมิสูง และ
+              ความดันต่ำ</strong> (เพราะโมเลกุลจะอยู่ห่างกันมากและมีพลังงานจลน์สูง ทำให้แรงยึดเหนี่ยวมีผลน้อยมาก)
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB 2: กฎของบอยล์ ชาร์ล เก-ลูซัก -->
+      <div id="review-tab-16-2-2-laws" class="hidden space-y-6">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 text-emerald-600">
+            <i class="fa-solid fa-compress"></i> Simulator: กฎพื้นฐานของแก๊ส (Boyle & Charles)
+          </h3>
+          <p class="text-sm text-slate-600 mb-6">
+            ทดลองปรับสภาวะของแก๊ส 1 โมล ในกระบอกสูบ สังเกตความสัมพันธ์ของ P, V, T เมื่อกำหนดให้ตัวแปรใดตัวแปรหนึ่งคงตัว
+            (สมมติให้ลูกสูบเคลื่อนที่ไร้แรงเสียดทาน)
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- SVG Box -->
+            <div
+              class="lg:col-span-6 bg-slate-900 p-6 rounded-2xl flex items-center justify-center relative min-h-[300px] border border-slate-800">
+              <div id="sim2-piston-container" class="w-full h-full flex items-center justify-center">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Controller Box -->
+            <div
+              class="lg:col-span-6 bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between space-y-4">
+              <div class="space-y-4">
+                <div class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-2 rounded-lg text-center mb-4">
+                  แก๊สจำนวน 1 โมล (n = 1)
+                </div>
+
+                <!-- Mode Selection -->
+                <div class="mb-4">
+                  <label class="block text-xs font-bold text-slate-600 mb-2">เลือกสภาวะควบคุม (ทดสอบกฎ):</label>
+                  <div class="flex gap-2">
+                    <button id="btn-sim2-boyle" onclick="setGasLawMode('boyle')"
+                      class="flex-1 text-xs py-2 rounded-lg font-bold bg-emerald-500 text-white shadow-sm">อุณหภูมิคงตัว
+                      (Boyle)</button>
+                    <button id="btn-sim2-charles" onclick="setGasLawMode('charles')"
+                      class="flex-1 text-xs py-2 rounded-lg font-bold bg-white text-slate-600 border border-slate-300">ความดันคงตัว
+                      (Charles)</button>
+                  </div>
+                </div>
+
+                <!-- Volume Slider -->
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-slate-700 mb-2">
+                    <span>ปริมาตร (\(V\)):</span>
+                    <span id="lbl-sim2-vol"
+                      class="text-emerald-600 font-bold bg-emerald-50 px-2 rounded border border-emerald-100">22.4
+                      L</span>
+                  </div>
+                  <input type="range" id="sim2-slider-vol" min="10" max="50" step="0.1" value="22.4"
+                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+
+                <!-- Temperature Slider -->
+                <div>
+                  <div class="flex justify-between text-xs font-semibold text-slate-700 mb-2">
+                    <span>อุณหภูมิ (\(T\)):</span>
+                    <span id="lbl-sim2-temp"
+                      class="text-orange-600 font-bold bg-orange-50 px-2 rounded border border-orange-100">273 K</span>
+                  </div>
+                  <input type="range" id="sim2-slider-temp" min="100" max="600" step="1" value="273"
+                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-orange-500 disabled:opacity-50">
+                </div>
+              </div>
+
+              <!-- Output Panel -->
+              <div class="bg-slate-800 text-white p-4 rounded-xl border border-slate-700 shadow-inner">
+                <span class="text-[10px] text-slate-400 block font-bold tracking-wider mb-2"
+                  id="lbl-sim2-law-name">กฎของบอยล์ (\(T\) คงตัว)</span>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm">ความดันอ่านได้ (\(P\)):</span>
+                  <span id="lbl-sim2-pressure" class="text-xl font-mono font-bold text-sky-400">1.00 atm</span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-2 text-right" id="lbl-sim2-formula">\( P \propto \frac{1}{V}
+                  \)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-3">
+            <h4 class="font-bold text-slate-800 text-base border-b border-slate-100 pb-2">กฎของบอยล์ (Boyle's Law)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-sans">
+              "เมื่อ <strong>อุณหภูมิและมวล</strong> ของแก๊สคงตัว ความดันของแก๊สจะแปรผกผันกับปริมาตรของแก๊ส"
+            </p>
+            <div
+              class="text-center font-mono text-sm bg-slate-50 py-2 rounded border border-slate-100 text-emerald-700 font-bold">
+              \( P_1 V_1 = P_2 V_2 \)
+            </div>
+            <p class="text-[11px] text-slate-500">เช่น การบีบลูกโป่งให้เล็กลง (V ลด) ทำให้อากาศข้างในดันตัวแรงขึ้น (P
+              เพิ่ม)</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-3">
+            <h4 class="font-bold text-slate-800 text-base border-b border-slate-100 pb-2">กฎของชาร์ล (Charles's Law)
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-sans">
+              "เมื่อ <strong>ความดันและมวล</strong> ของแก๊สคงตัว ปริมาตรของแก๊สจะแปรผันตรงกับอุณหภูมิเคลวิน"
+            </p>
+            <div
+              class="text-center font-mono text-sm bg-slate-50 py-2 rounded border border-slate-100 text-orange-700 font-bold">
+              \( \frac{V_1}{T_1} = \frac{V_2}{T_2} \)
+            </div>
+            <p class="text-[11px] text-slate-500">เช่น การนำลูกโป่งไปตากแดด (T เพิ่ม) ลูกโป่งจะพองตัวใหญ่ขึ้น (V เพิ่ม)
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-3">
+            <h4 class="font-bold text-slate-800 text-base border-b border-slate-100 pb-2">กฎของเก-ลูซัก (Gay-Lussac's
+              Law)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-sans">
+              "เมื่อ <strong>ปริมาตรและมวล</strong> ของแก๊สคงตัว ความดันของแก๊สจะแปรผันตรงกับอุณหภูมิเคลวิน"
+            </p>
+            <div
+              class="text-center font-mono text-sm bg-slate-50 py-2 rounded border border-slate-100 text-sky-700 font-bold">
+              \( \frac{P_1}{T_1} = \frac{P_2}{T_2} \)
+            </div>
+            <p class="text-[11px] text-slate-500">เช่น ยางรถยนต์เมื่อวิ่งทางไกลจนร้อน (T เพิ่ม) ความดันลมยางจะแข็งขึ้น
+              (P เพิ่ม)</p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-3 border-l-4 border-l-indigo-500">
+            <h4 class="font-bold text-indigo-900 text-base border-b border-slate-100 pb-2">กฎรวมแก๊ส (Combined Gas Law)
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-sans">
+              นำกฎทั้งสามมารวมกัน (เมื่อมวล/จำนวนโมลคงตัว แต่ P, V, T เปลี่ยนแปลงทั้งหมด)
+            </p>
+            <div
+              class="text-center font-mono text-sm bg-indigo-50 py-2 rounded border border-indigo-100 text-indigo-700 font-bold">
+              \( \frac{P_1 V_1}{T_1} = \frac{P_2 V_2}{T_2} \)
+            </div>
+            <p class="text-[11px] text-rose-500 font-bold">*ข้อควรระวัง: อุณหภูมิ (T) ต้องใช้หน่วยเคลวิน (K)
+              ในการคำนวณเสมอ!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: สมการแก๊สอุดมคติ -->
+      <div id="review-tab-16-2-2-ideal" class="hidden space-y-6">
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 text-center space-y-6">
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-rose-100 text-rose-600 rounded-full text-3xl mb-2">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-800">สมการสถานะของแก๊สอุดมคติ</h3>
+          <p class="text-sm text-slate-600 max-w-2xl mx-auto">
+            จากการรวมกฎของแก๊ส และกำหนดให้ปริมาณแก๊สสัมพันธ์กับจำนวนโมล (\(n\))
+            จะได้สมการที่ครอบจักรวาลในการอธิบายสภาวะของแก๊สอุดมคติใน 1 สเตต (ไม่ต้องเปรียบเทียบก่อน-หลัง) เรียกว่า
+            <strong>Ideal Gas Law</strong>
+          </p>
+
+          <div class="bg-rose-50 border-2 border-rose-200 p-6 md:p-10 rounded-2xl max-w-3xl mx-auto shadow-inner">
+            <div class="text-3xl md:text-5xl font-mono font-extrabold text-rose-700 mb-6 tracking-widest">
+              \( PV = nRT \)
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left text-sm text-slate-700 font-medium">
+              <div class="space-y-3">
+                <p><span class="inline-block w-8 font-mono text-rose-600 font-bold">P</span> = ความดัน (Pascal หรือ \(
+                  \text{N/m}^2 \))</p>
+                <p><span class="inline-block w-8 font-mono text-rose-600 font-bold">V</span> = ปริมาตร (\( \text{m}^3
+                  \))</p>
+                <p><span class="inline-block w-8 font-mono text-rose-600 font-bold">n</span> = จำนวนโมล (mol)</p>
+              </div>
+              <div class="space-y-3">
+                <p><span class="inline-block w-8 font-mono text-rose-600 font-bold">R</span> =
+                  ค่าคงตัวแก๊สอุดมคติ<br><span class="pl-8 text-xs text-slate-500">(\( 8.31 \text{ J/(mol K)} \))</span>
+                </p>
+                <p><span class="inline-block w-8 font-mono text-rose-600 font-bold">T</span> = อุณหภูมิสัมบูรณ์ (Kelvin)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 p-5 rounded-xl text-left space-y-3">
+            <h5 class="font-bold text-slate-800 text-sm">💡 รูปแบบสมการที่เกี่ยวข้องกับจำนวนโมเลกุล (N):</h5>
+            <p class="text-xs text-slate-600">
+              เนื่องจาก \( n = \frac{N}{N_A} \) เมื่อนำไปแทนค่าจะได้ \( PV = \left(\frac{N}{N_A}\right)RT \) <br>
+              กำหนดให้ <strong>ค่าคงตัวโบลต์ซมันน์ (Boltzmann constant, \(k_B\))</strong> \( = \frac{R}{N_A} \approx
+              1.38 \times 10^{-23} \text{ J/K} \) <br>
+              จะได้สมการแก๊สอุดมคติอีกรูปหนึ่งคือ:
+            </p>
+            <div class="text-center font-mono text-lg font-bold text-indigo-700 py-2">
+              \( PV = N k_B T \)
+            </div>
+            <p class="text-[11px] text-slate-500 text-center">สมการนี้ใช้เมื่อโจทย์กำหนดหรือต้องการหา "จำนวนโมเลกุล
+              (อนุภาค)" โดยตรง</p>
+          </div>
+
+          <!-- Quick Calculator Tool -->
+          <div class="max-w-xl mx-auto mt-8 border border-slate-200 rounded-xl overflow-hidden shadow-sm text-left">
+            <div
+              class="bg-slate-100 px-4 py-3 border-b border-slate-200 font-bold text-sm text-slate-700 flex items-center gap-2">
+              <i class="fa-solid fa-calculator text-slate-500"></i> เครื่องคำนวณสภาวะแก๊ส (STP Check)
+            </div>
+            <div class="p-5 space-y-4">
+              <p class="text-xs text-slate-500 mb-3">สภาวะมาตรฐาน (STP) คือ ที่ \( P = 1 \text{ atm} (1.013 \times 10^5
+                \text{ Pa}) \) และ \( T = 0^\circ\text{C} (273.15 \text{ K}) \)</p>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-600 mb-1">จำนวนโมล (mol)</label>
+                  <input type="number" id="calc-n" value="1" step="0.1"
+                    class="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:ring-1 focus:ring-rose-500 outline-none"
+                    oninput="calculateIdealVolume()">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-600 mb-1">อุณหภูมิ (K)</label>
+                  <input type="number" id="calc-t" value="273.15" step="1"
+                    class="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:ring-1 focus:ring-rose-500 outline-none"
+                    oninput="calculateIdealVolume()">
+                </div>
+              </div>
+              <div class="bg-rose-50 p-3 rounded flex justify-between items-center border border-rose-100">
+                <span class="text-xs font-bold text-rose-800">ปริมาตรที่ความดัน 1 atm:</span>
+                <span id="calc-v-result" class="font-mono font-bold text-rose-600">22.41 L</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: ปริมาณสาร (โมล) -->
+      <div id="review-tab-16-2-moles" class="hidden space-y-6">
+        <div class="bg-amber-50 rounded-2xl p-6 md:p-8 shadow-sm border border-amber-200">
+          <div class="flex items-center gap-3 mb-6 border-b border-amber-200/50 pb-4">
+            <div
+              class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl shadow-sm">
+              <i class="fa-solid fa-weight-scale"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-amber-900">ทบทวนเคมี: การคำนวณจำนวนโมล</h3>
+              <p class="text-xs md:text-sm text-amber-700">ปริมาณสารที่จำเป็นต้องใช้ในสมการฟิสิกส์บทนี้</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white p-5 rounded-xl border border-amber-100 shadow-sm space-y-2">
+              <h4 class="font-bold text-slate-800 text-sm">จำนวนโมล (\(n\)) กับ จำนวนโมเลกุล (\(N\))</h4>
+              <p class="text-xs text-slate-600">แก๊ส 1 โมล จะมีจำนวนอนุภาคเท่ากับค่าคงตัวอาโวกาโดร (\(N_A\)) เสมอ</p>
+              <div
+                class="bg-slate-50 p-3 rounded-lg text-center font-mono font-bold text-sm text-indigo-600 border border-slate-100 my-2">
+                \( n = \frac{N}{N_A} \)
+              </div>
+              <p class="text-[11px] text-slate-500">โดย \(N_A = 6.02 \times 10^{23} \text{ อนุภาค/โมล}\)</p>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-amber-100 shadow-sm space-y-2">
+              <h4 class="font-bold text-slate-800 text-sm">จำนวนโมล (\(n\)) กับ มวลของแก๊ส (\(m\))</h4>
+              <p class="text-xs text-slate-600">แก๊สแต่ละชนิด 1 โมล จะมีมวลไม่เท่ากัน ขึ้นอยู่กับมวลโมเลกุล (\(M\))
+                ของแก๊สนั้นๆ</p>
+              <div
+                class="bg-slate-50 p-3 rounded-lg text-center font-mono font-bold text-sm text-indigo-600 border border-slate-100 my-2">
+                \( n = \frac{m}{M} \)
+              </div>
+              <p class="text-[11px] text-rose-500 font-bold">*ในฟิสิกส์ มวล \(m\) ใช้หน่วย กิโลกรัม (kg) และ \(M\)
+                ต้องใช้ กิโลกรัม/โมล (\(\times 10^{-3}\))</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-amber-100 shadow-sm space-y-3">
+            <h4 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-list-ol text-amber-500 mr-1"></i>
+              มวลโมเลกุล (\(M\)) ของแก๊สที่พบบ่อย</h4>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-left text-slate-600">
+                <thead class="bg-slate-50 text-slate-700">
+                  <tr>
+                    <th class="px-4 py-2 border-b">ชนิดแก๊ส</th>
+                    <th class="px-4 py-2 border-b">สูตรเคมี</th>
+                    <th class="px-4 py-2 border-b">M (กรัม/โมล)</th>
+                    <th class="px-4 py-2 border-b">M ในฟิสิกส์ (kg/mol)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr>
+                    <td class="px-4 py-2">ฮีเลียม</td>
+                    <td class="px-4 py-2 font-mono">He</td>
+                    <td class="px-4 py-2">4</td>
+                    <td class="px-4 py-2 font-mono">\(4 \times 10^{-3}\)</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2">ไฮโดรเจน</td>
+                    <td class="px-4 py-2 font-mono">H₂</td>
+                    <td class="px-4 py-2">2</td>
+                    <td class="px-4 py-2 font-mono">\(2 \times 10^{-3}\)</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2">ออกซิเจน</td>
+                    <td class="px-4 py-2 font-mono">O₂</td>
+                    <td class="px-4 py-2">32</td>
+                    <td class="px-4 py-2 font-mono">\(32 \times 10^{-3}\)</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2">ไนโตรเจน</td>
+                    <td class="px-4 py-2 font-mono">N₂</td>
+                    <td class="px-4 py-2">28</td>
+                    <td class="px-4 py-2 font-mono">\(28 \times 10^{-3}\)</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2">คาร์บอนไดออกไซด์</td>
+                    <td class="px-4 py-2 font-mono">CO₂</td>
+                    <td class="px-4 py-2">44</td>
+                    <td class="px-4 py-2 font-mono">\(44 \times 10^{-3}\)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- SECTION 3: PRACTICE MODE -->
+    <!-- ==================================================== -->
+    <section id="sec-practice" class="hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800">🧠 ตะลุยโจทย์: แก๊สอุดมคติ</h2>
+          <p class="text-sm text-slate-500">ระบบสุ่มตัวแปรฝึกคำนวณ อิงเนื้อหา 16.2 แบบฝึกหัดและตรวจสอบความเข้าใจ สสวท.
+          </p>
+        </div>
+        <button onclick="showSection('home')"
+          class="self-start sm:self-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-semibold border border-slate-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-chevron-left"></i> กลับหน้าแรก
+        </button>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <button onclick="startPracticeMode('16-2-1')" id="btn-prac-16-2-1"
+          class="p-4 bg-white hover:bg-sky-50 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-4 transition text-left shadow-sm hover:shadow">
+          <div class="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600 text-sm font-bold">
+            16.2.1</div>
+          <div>
+            <h4 class="font-bold text-sm">แบบจำลองแก๊ส</h4>
+            <p class="text-[11px] text-slate-500">ทฤษฎีสมมติฐานแก๊ส</p>
+          </div>
+        </button>
+        <button onclick="startPracticeMode('16-2-2')" id="btn-prac-16-2-2"
+          class="p-4 bg-white hover:bg-emerald-50 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-4 transition text-left shadow-sm hover:shadow">
+          <div
+            class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 text-sm font-bold">
+            16.2.2a</div>
+          <div>
+            <h4 class="font-bold text-sm">กฎของบอยล์-ชาร์ล</h4>
+            <p class="text-[11px] text-slate-500">เปรียบเทียบสภาวะแก๊ส</p>
+          </div>
+        </button>
+        <button onclick="startPracticeMode('16-2-3')" id="btn-prac-16-2-3"
+          class="p-4 bg-white hover:bg-rose-50 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-4 transition text-left shadow-sm hover:shadow">
+          <div
+            class="w-10 h-10 bg-rose-100 rounded-lg flex items-center justify-center text-rose-600 text-sm font-bold">
+            16.2.2b</div>
+          <div>
+            <h4 class="font-bold text-sm">สมการ PV=nRT</h4>
+            <p class="text-[11px] text-slate-500">คำนวณแก๊สอุดมคติ</p>
+          </div>
+        </button>
+        <button onclick="startPracticeMode('16-2-4')" id="btn-prac-16-2-4"
+          class="p-4 bg-white hover:bg-amber-50 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-4 transition text-left shadow-sm hover:shadow">
+          <div
+            class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-sm font-bold">
+            Mole</div>
+          <div>
+            <h4 class="font-bold text-sm">โมลและมวล</h4>
+            <p class="text-[11px] text-slate-500">การแปลงหน่วยเคมี-ฟิสิกส์</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Live Practice Container -->
+      <div id="practice-arena"
+        class="hidden bg-white rounded-2xl p-6 shadow-md border border-slate-200 space-y-6 relative">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <span
+            class="bg-indigo-100 text-indigo-800 border border-indigo-200 px-3 py-1 rounded-full text-xs font-bold self-start"
+            id="prac-badge-mode">
+            โหมดการฝึกฝน
+          </span>
+          <div class="flex items-center gap-2">
+            <select id="prac-type-select" onchange="regeneratePractice()"
+              class="text-xs font-bold border border-slate-300 rounded-lg px-2.5 py-1.5 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="standard" selected>โจทย์ค่าคงที่ (ตัวเลขหนังสือเรียน)</option>
+              <option value="random">โจทย์สุ่มตัวแปร (ฝึกคิดเลข)</option>
+            </select>
+            <button onclick="regeneratePractice()"
+              class="text-xs font-bold bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-100 px-2.5 py-1.5 rounded-lg transition flex items-center gap-1">
+              <i class="fa-solid fa-rotate"></i> ข้อต่อไป
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Display -->
+        <div class="bg-slate-50 p-5 md:p-8 rounded-2xl border border-slate-200">
+          <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mb-3"
+            id="prac-question-title">📋 ข้อคำถาม:</span>
+          <p id="prac-question-text" class="text-base md:text-lg text-slate-800 font-medium leading-relaxed math-font">
+            - กำลังเจนโจทย์ -
+          </p>
+        </div>
+
+        <!-- User Answer Form -->
+        <div class="space-y-4 max-w-2xl mx-auto">
+          <h4 class="font-bold text-sm text-slate-700 text-center mb-4">✍ ️ระบุคำตอบของคุณ</h4>
+
+          <!-- Choice Zone -->
+          <div id="prac-choice-zone" class="grid grid-cols-1 gap-3 hidden"></div>
+
+          <!-- Numeric Zone -->
+          <div id="prac-numeric-zone" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label id="lbl-prac-input-1" class="block text-xs font-bold text-slate-600 mb-1">คำตอบ:</label>
+                <input type="text" autocomplete="off" id="prac-input-val1" placeholder="เช่น 2.4e5 หรือ 240000"
+                  class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-center font-mono text-lg transition">
+              </div>
+              <div id="prac-input-zone-2" class="hidden">
+                <label id="lbl-prac-input-2" class="block text-xs font-bold text-slate-600 mb-1">คำตอบ 2:</label>
+                <input type="text" autocomplete="off" id="prac-input-val2"
+                  class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-center font-mono text-lg transition">
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <button onclick="regeneratePractice()"
+                class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-xl transition border border-slate-200">
+                ข้ามข้อนี้
+              </button>
+              <button onclick="checkPracticeAnswer()"
+                class="flex-[2] py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition">
+                <i class="fa-solid fa-check mr-1"></i> ตรวจคำตอบ
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback & Explanation -->
+        <div id="prac-feedback" class="hidden p-5 rounded-2xl border transition-all duration-300"></div>
+        <div id="prac-explanation-box"
+          class="hidden space-y-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-inner">
+          <h5 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-2 flex items-center gap-2"><i
+              class="fa-solid fa-lightbulb text-amber-500"></i> เฉลยและวิธีทำ:</h5>
+          <div id="prac-explanation-text" class="text-sm text-slate-700 space-y-3 math-font leading-relaxed"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- SECTION 4: EXAM START SCREEN -->
+    <!-- ==================================================== -->
+    <section id="sec-exam-start" class="hidden max-w-xl mx-auto space-y-6 animate-[fadeIn_0.3s_ease-out]">
+      <div
+        class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100 space-y-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full -mr-4 -mt-4"></div>
+
+        <div class="text-center space-y-3 relative z-10">
+          <div
+            class="w-20 h-20 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-4xl mx-auto shadow-sm transform -rotate-3">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-800 mt-4">ทดสอบเก็บคะแนน ม.6</h2>
+          <p class="text-sm text-slate-500">บทที่ 16.2 เรื่อง แก๊สอุดมคติ (Ideal Gas)</p>
+        </div>
+
+        <div
+          class="bg-amber-50 rounded-2xl p-5 border border-amber-200 space-y-3 text-sm text-amber-900/90 leading-relaxed shadow-inner">
+          <h4 class="font-bold text-amber-900 flex items-center gap-2 border-b border-amber-200/50 pb-2">
+            <i class="fa-solid fa-triangle-exclamation"></i> กติกาการสอบ (อ่านก่อนเริ่ม):
+          </h4>
+          <ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm font-medium">
+            <li>มีทั้งหมด <strong>5 ข้อ</strong> ข้อละ 2 คะแนน (รวม 10 คะแนน)</li>
+            <li>ครอบคลุมเนื้อหา: แบบจำลองแก๊ส, กฎบอยล์-ชาร์ล, และสมการ \(PV=nRT\)</li>
+            <li>มีตัวจับเวลาถอยหลัง (ค่าเริ่มต้น 10 นาที)</li>
+            <li><strong>ห้ามรีเฟรชหน้าจอ</strong> มิฉะนั้นอาจถูกปรับฟาวล์และส่งข้อสอบอัตโนมัติ</li>
+          </ul>
+        </div>
+
+        <!-- Student Form -->
+        <div class="space-y-4 pt-2">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1.5">ชื่อ-นามสกุล:</label>
+              <input type="text" id="exam-student-name" placeholder="ระบุชื่อจริง นามสกุล"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white text-sm">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1.5">ชั้น ม.6 / ห้อง:</label>
+                <select id="exam-student-class"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white text-sm appearance-none">
+                  <option value="" disabled selected>เลือกห้อง</option>
+                  <option value="1">6/1</option>
+                  <option value="2">6/2</option>
+                  <option value="3">6/3</option>
+                  <option value="4">6/4</option>
+                  <option value="5">6/5</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1.5">เลขที่:</label>
+                <input type="number" id="exam-student-no" placeholder="เช่น 5"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white text-sm">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1.5 text-right">เวลาสอบ (นาที):</label>
+              <input type="number" id="exam-duration-minutes" value="10" min="1" max="60"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white text-sm text-right font-mono text-indigo-700 font-bold">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 pt-4">
+          <button onclick="showSection('home')"
+            class="py-3 px-6 bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-bold rounded-xl transition text-sm">
+            กลับ
+          </button>
+          <button onclick="startExamProcess()"
+            class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition text-sm flex justify-center items-center gap-2">
+            เริ่มทำข้อสอบ <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- SECTION 5: LIVE EXAM SCREEN -->
+    <!-- ==================================================== -->
+    <section id="sec-exam-live" class="hidden space-y-6 relative animate-[fadeIn_0.2s_ease-out]">
+      <!-- Sticky Timer -->
+      <div
+        class="sticky top-2 z-50 bg-slate-900/95 backdrop-blur text-white px-4 py-3.5 rounded-2xl shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-slate-700">
+        <div class="flex items-center gap-3 min-w-0">
+          <div
+            class="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center text-indigo-400 border border-slate-600">
+            <i class="fa-solid fa-user-graduate text-xs"></i>
+          </div>
+          <span class="text-sm text-slate-300 truncate font-medium">
+            <strong class="text-white" id="lbl-exam-user-info">-</strong>
+          </span>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-800/80 px-4 py-1.5 rounded-full border border-slate-700">
+          <i class="fa-solid fa-stopwatch text-rose-400 animate-pulse"></i>
+          <span class="text-sm text-slate-400">เหลือเวลา:</span>
+          <span id="exam-timer-display" class="font-mono text-lg font-bold text-white tracking-wider">10:00</span>
+        </div>
+      </div>
+
+      <!-- Questions List -->
+      <div id="exam-questions-container" class="space-y-6"></div>
+
+      <!-- Submit Button -->
+      <div class="pt-6 pb-10">
+        <button onclick="confirmSubmitExam()"
+          class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl shadow-xl shadow-emerald-600/20 transition flex items-center justify-center gap-2 text-lg">
+          <i class="fa-solid fa-paper-plane"></i> ยืนยันการส่งข้อสอบ
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- SECTION 6: EXAM RESULTS SCREEN -->
+    <!-- ==================================================== -->
+    <section id="sec-exam-result" class="hidden max-w-4xl mx-auto space-y-6 animate-[fadeIn_0.5s_ease-out]">
+      <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-slate-100">
+        <div class="text-center space-y-3 border-b border-slate-100 pb-8 mb-8">
+          <span
+            class="bg-emerald-100 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-2">
+            ผลการประเมิน
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-800">ผลสอบ แก๊สอุดมคติ (16.2)</h2>
+          <p class="text-slate-500">ระบบได้บันทึกคะแนนของคุณเรียบร้อยแล้ว</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-around gap-8 mb-10">
+          <!-- Score Circle -->
+          <div class="relative w-40 h-40 flex items-center justify-center shrink-0">
+            <svg class="absolute inset-0 w-full h-full transform -rotate-90 drop-shadow-md">
+              <circle cx="80" cy="80" r="70" stroke="#f1f5f9" stroke-width="12" fill="transparent" />
+              <circle cx="80" cy="80" r="70" id="res-circle-progress" stroke="#4f46e5" stroke-dasharray="439.8"
+                stroke-dashoffset="439.8" stroke-width="12" fill="transparent" stroke-linecap="round"
+                class="transition-all duration-1500 ease-out" />
+            </svg>
+            <div class="text-center absolute">
+              <span id="lbl-res-total-score" class="text-5xl font-black text-slate-800">0</span>
+              <span class="text-slate-400 text-sm font-bold block mt-1">/ 10</span>
+            </div>
+          </div>
+
+          <!-- Info Cards -->
+          <div class="w-full space-y-4">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex justify-between items-center">
+              <span class="text-xs text-slate-500 font-bold uppercase"><i
+                  class="fa-solid fa-user text-slate-400 mr-2"></i>ผู้สอบ</span>
+              <div class="text-right">
+                <p id="lbl-res-student-name" class="font-bold text-slate-800">-</p>
+                <p id="lbl-res-student-meta" class="text-xs text-slate-500">-</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <span class="text-[10px] text-slate-500 font-bold uppercase block mb-1"><i
+                    class="fa-solid fa-clock text-slate-400 mr-1"></i>เวลาที่ใช้</span>
+                <p id="lbl-res-time-elapsed" class="text-sm font-bold text-slate-800">-</p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <span class="text-[10px] text-slate-500 font-bold uppercase block mb-1"><i
+                    class="fa-solid fa-calendar text-slate-400 mr-1"></i>วันที่ส่ง</span>
+                <p id="lbl-res-finished-at" class="text-xs font-bold text-slate-800 mt-0.5">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="lbl-res-badge-feedback"
+          class="text-center p-4 rounded-xl mb-8 border border-slate-200 bg-slate-50 text-sm">
+          <!-- Feedback message injected by JS -->
+        </div>
+
+        <!-- Detailed Table -->
+        <h4 class="font-bold text-slate-800 text-lg mb-4 flex items-center gap-2"><i
+            class="fa-solid fa-chart-pie text-sky-500"></i> สรุปรายข้อ</h4>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 mb-8 shadow-sm">
+          <table class="w-full text-sm text-left">
+            <thead class="text-xs text-slate-500 bg-slate-50 uppercase font-bold border-b border-slate-200">
+              <tr>
+                <th class="px-5 py-4">ข้อ</th>
+                <th class="px-5 py-4">เนื้อหา / หัวข้อ</th>
+                <th class="px-5 py-4 text-center">คะแนน</th>
+                <th class="px-5 py-4 text-center">ผล</th>
+              </tr>
+            </thead>
+            <tbody id="exam-result-tbody" class="divide-y divide-slate-100">
+              <!-- JS Injected -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Solutions Toggle -->
+        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-2">
+          <button onclick="toggleExamSolutionBox()" id="btn-toggle-solutions"
+            class="w-full py-4 hover:bg-slate-100 text-slate-700 font-bold rounded-xl transition text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-chevron-down" id="icon-toggle-sol"></i> <span
+              id="lbl-toggle-solution-text">ดูเฉลยละเอียดและวิธีทำ</span>
+          </button>
+          <div id="exam-solution-box" class="hidden p-4 space-y-6">
+            <div id="exam-solutions-container" class="space-y-6"></div>
+          </div>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 pt-8 border-t border-slate-100">
+          <button onclick="showSection('practice')"
+            class="py-4 bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-600 font-bold rounded-xl transition flex justify-center items-center gap-2">
+            <i class="fa-solid fa-dumbbell"></i> ไปฝึกโจทย์เสริม
+          </button>
+          <button onclick="showSection('home')"
+            class="py-4 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl shadow-md transition flex justify-center items-center gap-2">
+            <i class="fa-solid fa-house"></i> กลับสู่หน้าหลัก
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Alert Modal -->
+  <div id="modal-alert"
+    class="hidden fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div
+      class="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 max-w-sm w-full text-center space-y-5 transform transition-all duration-200 scale-95 opacity-0"
+      id="modal-alert-card">
+      <div class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl" id="modal-alert-icon">
+        <i class="fa-solid fa-info"></i>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg text-slate-800 mb-1" id="modal-alert-title">Title</h3>
+        <p class="text-sm text-slate-500 leading-relaxed" id="modal-alert-msg">Message</p>
+      </div>
+      <button onclick="closeAlertModal()"
+        class="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl shadow-sm text-sm transition">
+        ตกลง / รับทราบ
+      </button>
+    </div>
+  </div>
+
+  <!-- Global Confirm Modal -->
+  <div id="modal-confirm"
+    class="hidden fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div
+      class="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 max-w-sm w-full text-center space-y-5 transform transition-all duration-200 scale-95 opacity-0"
+      id="modal-confirm-card">
+      <div class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-amber-100 text-amber-600">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg text-slate-800 mb-1">ยืนยันการส่งข้อสอบ</h3>
+        <p class="text-sm text-slate-500 leading-relaxed" id="modal-confirm-msg">ข้อความ</p>
+      </div>
+      <div class="flex gap-3 mt-2">
+        <button onclick="closeConfirmModal()"
+          class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition text-sm">
+          ยกเลิก
+        </button>
+        <button onclick="executeSubmitExam()"
+          class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-sm text-sm transition">
+          ยืนยันส่งข้อสอบ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-slate-900 text-slate-300 py-8 text-center text-xs space-y-4 mt-auto border-t border-slate-800">
+    <p class="font-bold text-white text-sm md:text-base px-4">รายวิชา ฟิสิกส์ 5 รหัสวิชา ว33205 โรงเรียนห้องสอนศึกษา
+      ในพระอุปถัมภ์ฯ</p>
+    <div class="flex justify-center">
+      <div
+        class="inline-flex items-center gap-1.5 bg-[#1e293b]/90 text-white rounded-full px-6 py-2.5 border border-slate-700/50 shadow-sm text-xs md:text-sm font-semibold">
+        <span class="text-cyan-400 font-bold">DEV BADGE</span> : นายนพพร สมบูรณ์ชัย
+      </div>
+    </div>
+    <p class="text-white/40 text-[10px] md:text-xs">© 2026 Interactive Physics Learning Portal</p>
+  </footer>
+
+  <!-- ==================================================== -->
+  <!-- JAVASCRIPT SYSTEM -->
+  <!-- ==================================================== -->
+  <script>
+    // System State Variables
+    let currentSection = 'home';
+    let currentPracticeTopic = '16-2-1';
+    let currentPracticeQuestion = null;
+
+    // Exam State
+    let currentExamQuestions = [];
+    let examTimerInterval = null;
+    let examTimeRemaining = 600;
+    let examDurationSeconds = 600;
+    const EXAM_STATE_KEY = 'exam_session_ideal_gas';
+    let examStartTimestamp = null;
+    let examDeadlineTimestamp = null;
+    let examIsActive = false;
+    let examSubmissionInProgress = false;
+    let examStudentInfo = {};
+    let examExitGuardEnabled = false;
+
+    // --- Helper Math / Format Functions ---
+    function formatSci(num, sigFigs = 3) {
+      if (num === 0) return "0";
+      return num.toExponential(sigFigs - 1).replace('e', ' \\times 10^{').replace('+', '') + '}';
+    }
+
+    function cleanAndParseNumber(str) {
+      let clean = str.trim().toLowerCase().replace(/\\times/g, 'e').replace(/x/g, 'e').replace(/\*/g, 'e').replace(/10\^/g, '').replace(/\{/g, '').replace(/\}/g, '').replace(/\s+/g, '');
+      if (clean.includes('e')) {
+        const parts = clean.split('e');
+        return parseFloat(parts[0]) * Math.pow(10, parseFloat(parts[1]));
+      }
+      return parseFloat(clean);
+    }
+
+    function isNumericAnswerCorrect(userStr, targetNum) {
+      if (!userStr) return false;
+      const parsedUser = cleanAndParseNumber(userStr);
+      if (isNaN(parsedUser)) return false;
+      if (Math.abs(targetNum) < 1e-9) return Math.abs(parsedUser) < 1e-9;
+      return Math.abs(parsedUser - targetNum) / Math.abs(targetNum) < 0.05; // 5% error margin
+    }
+
+    function formatExamTime(seconds) {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const s = (seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    // --- Navigation & Core UI ---
+    function showSection(sectionId) {
+      let norm = sectionId.startsWith('sec-') ? sectionId.slice(4) : sectionId;
+      if (examIsActive && !['exam-live', 'exam-result'].includes(norm)) {
+        triggerAlert("กำลังสอบ", "กรุณาส่งข้อสอบก่อนออกจากหน้านี้ครับ", "fa-lock", "bg-amber-100 text-amber-600");
+        norm = 'exam-live';
+      }
+      document.getElementById('mobile-menu').classList.add('hidden');
+
+      ['home', 'review', 'practice', 'exam-start', 'exam-live', 'exam-result'].forEach(s => {
+        const sec = document.getElementById('sec-' + s);
+        if (sec) sec.classList.toggle('hidden', s !== norm);
+      });
+
+      if (norm !== 'exam-live' && !examIsActive) clearInterval(examTimerInterval);
+      currentSection = norm;
+      window.scrollTo(0, 0);
+      renderMath();
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    function triggerAlert(title, message, iconClass = 'fa-info', colorClass = 'bg-slate-100 text-slate-800') {
+      const m = document.getElementById('modal-alert'), c = document.getElementById('modal-alert-card'), i = document.getElementById('modal-alert-icon');
+      document.getElementById('modal-alert-title').innerText = title;
+      document.getElementById('modal-alert-msg').innerText = message;
+      i.className = `w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl ${colorClass}`;
+      i.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+      m.classList.remove('hidden');
+      setTimeout(() => { c.classList.remove('scale-95', 'opacity-0'); }, 10);
+    }
+
+    function closeAlertModal() {
+      const m = document.getElementById('modal-alert'), c = document.getElementById('modal-alert-card');
+      c.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); }, 200);
+    }
+
+    function renderMath() {
+      if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+        MathJax.typesetPromise().catch(err => console.log(err));
+      }
+    }
+
+    // --- Review Tabs Logic ---
+    function switchReviewTab(tabName) {
+      ['16-2-1', '16-2-2-laws', '16-2-2-ideal', '16-2-moles'].forEach(t => {
+        const btn = document.getElementById(`btn-tab-${t}`), tab = document.getElementById(`review-tab-${t}`);
+        if (t === tabName) {
+          btn.className = "flex-1 min-w-[140px] text-center py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-200 bg-white text-sky-700 shadow-sm border border-slate-200/50";
+          tab.classList.remove('hidden');
+        } else {
+          btn.className = "flex-1 min-w-[140px] text-center py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-200 text-slate-500 hover:text-slate-800 hover:bg-slate-200/50";
+          tab.classList.add('hidden');
+        }
+      });
+      stopSimulations();
+      if (tabName === '16-2-1') initGasModelSim();
+      else if (tabName === '16-2-2-laws') initGasLawSim();
+    }
+
+    function stopSimulations() {
+      if (gasModelAnimFrame) cancelAnimationFrame(gasModelAnimFrame);
+      if (gasLawAnimFrame) cancelAnimationFrame(gasLawAnimFrame);
+    }
+
+    // --- SIM 1: Ideal Gas Model (Canvas) ---
+    let gasModelAnimFrame = null;
+    let gasParticles = [];
+
+    function initGasModelSim() {
+      const canvas = document.getElementById('gas-model-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sliderT = document.getElementById('sim1-slider-temp');
+      const sliderN = document.getElementById('sim1-slider-num');
+      const lblT = document.getElementById('lbl-sim1-temp');
+      const lblN = document.getElementById('lbl-sim1-num');
+
+      const createParticles = (N) => {
+        gasParticles = [];
+        for (let i = 0; i < N; i++) {
+          gasParticles.push({
+            x: Math.random() * (canvas.width - 10) + 5,
+            y: Math.random() * (canvas.height - 10) + 5,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2,
+            r: 3
+          });
+        }
+      };
+
+      createParticles(parseInt(sliderN.value));
+
+      sliderN.oninput = () => {
+        lblN.innerText = `${sliderN.value} อนุภาค`;
+        createParticles(parseInt(sliderN.value));
+      };
+
+      const loop = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const T = parseInt(sliderT.value);
+        lblT.innerText = `${T} K`;
+        // v_rms proportional to sqrt(T). base T = 300K -> factor = 1
+        const speedFactor = Math.sqrt(T / 300) * 1.5;
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        gasParticles.forEach(p => {
+          p.x += p.vx * speedFactor;
+          p.y += p.vy * speedFactor;
+          // Wall collision (elastic)
+          if (p.x - p.r < 0) { p.x = p.r; p.vx *= -1; }
+          if (p.x + p.r > canvas.width) { p.x = canvas.width - p.r; p.vx *= -1; }
+          if (p.y - p.r < 0) { p.y = p.r; p.vy *= -1; }
+          if (p.y + p.r > canvas.height) { p.y = canvas.height - p.r; p.vy *= -1; }
+
+          ctx.moveTo(p.x + p.r, p.y);
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        });
+        ctx.fill();
+        gasModelAnimFrame = requestAnimationFrame(loop);
+      };
+      loop();
+    }
+
+    // --- SIM 2: Boyle & Charles (SVG Piston) ---
+    let gasLawMode = 'boyle'; // 'boyle' (T const) or 'charles' (P const)
+    let gasLawAnimFrame = null;
+    const n_const = 1; // 1 mol
+    const R_const = 0.0821; // L atm / K mol for easy scaling
+
+    function setGasLawMode(mode) {
+      gasLawMode = mode;
+      const bBoyle = document.getElementById('btn-sim2-boyle');
+      const bCharles = document.getElementById('btn-sim2-charles');
+      const sT = document.getElementById('sim2-slider-temp');
+      const sV = document.getElementById('sim2-slider-vol');
+      const lblLaw = document.getElementById('lbl-sim2-law-name');
+      const lblFormula = document.getElementById('lbl-sim2-formula');
+
+      if (mode === 'boyle') {
+        bBoyle.className = "flex-1 text-xs py-2 rounded-lg font-bold bg-emerald-500 text-white shadow-sm";
+        bCharles.className = "flex-1 text-xs py-2 rounded-lg font-bold bg-white text-slate-600 border border-slate-300";
+        sT.disabled = true;
+        sT.value = 273; // Reset to standard
+        document.getElementById('lbl-sim2-temp').innerText = "273 K (คงตัว)";
+        lblLaw.innerText = "กฎของบอยล์ (T คงตัว)";
+        lblFormula.innerHTML = "\\( P \\propto \\frac{1}{V} \\) หริอ \\( PV = k \\)";
+      } else {
+        bCharles.className = "flex-1 text-xs py-2 rounded-lg font-bold bg-orange-500 text-white shadow-sm";
+        bBoyle.className = "flex-1 text-xs py-2 rounded-lg font-bold bg-white text-slate-600 border border-slate-300";
+        sT.disabled = false;
+        lblLaw.innerText = "กฎของชาร์ล (P คงตัว)";
+        lblFormula.innerHTML = "\\( V \\propto T \\) หริอ \\( \\frac{V}{T} = k \\)";
+      }
+      renderMath();
+      updateGasLawSim();
+    }
+
+    function drawPistonSVG(V, P, T) {
+      const cont = document.getElementById('sim2-piston-container');
+      if (!cont) return;
+
+      // V limits 10 to 50
+      // Map V to piston Y: V=50 -> Y=20 (high up), V=10 -> Y=140 (low down)
+      const h_max = 140; // max gas height
+      const h_min = 20;
+      const pixelH = h_min + ((50 - V) / 40) * (h_max - h_min);
+
+      // Flame opacity based on T (100 to 600)
+      const flameOp = (T - 100) / 500;
+
+      // Color of gas based on P (1 atm to ~5 atm)
+      const pRatio = Math.min(1, (P - 0.4) / 5);
+      const r = Math.round(224 + pRatio * (239 - 224));
+      const g = Math.round(242 - pRatio * (242 - 68));
+      const b = Math.round(254 - pRatio * (254 - 68));
+
+      cont.innerHTML = `
+      <svg viewBox="0 0 200 250" class="w-full max-w-[200px] h-auto drop-shadow-lg">
+        <!-- Container -->
+        <path d="M 50 20 L 50 180 A 10 10 0 0 0 60 190 L 140 190 A 10 10 0 0 0 150 180 L 150 20" stroke="#475569" stroke-width="4" fill="none"/>
+        
+        <!-- Gas Volume -->
+        <rect x="52" y="${pixelH}" width="96" height="${188 - pixelH}" fill="rgb(${r},${g},${b})" opacity="0.6"/>
+        
+        <!-- Piston -->
+        <rect x="48" y="${pixelH - 10}" width="104" height="10" rx="3" fill="#334155"/>
+        <rect x="95" y="${pixelH - 50}" width="10" height="40" fill="#94a3b8"/>
+        
+        <!-- Weights (visualize P) if Charles mode (P const) draw 1 weight, if Boyle draw weights prop to P -->
+        ${P > 1.5 ? `<rect x="80" y="${pixelH - 25}" width="40" height="15" fill="#ef4444" rx="2"/><text x="100" y="${pixelH - 15}" fill="#fff" font-size="8" text-anchor="middle">Mass</text>` : ''}
+        ${P > 3.0 ? `<rect x="80" y="${pixelH - 45}" width="40" height="15" fill="#ef4444" rx="2"/>` : ''}
+
+        <!-- Heat/Flame (visualize T) -->
+        <path d="M 85 200 Q 100 180 115 200" stroke="#f59e0b" stroke-width="3" fill="none" opacity="${Math.max(0.1, flameOp)}"/>
+        <path d="M 90 205 Q 100 190 110 205" stroke="#ef4444" stroke-width="3" fill="none" opacity="${Math.max(0.1, flameOp)}"/>
+        
+        <!-- Measurements Annotations -->
+        <text x="160" y="${(pixelH + 188) / 2}" fill="#cbd5e1" font-size="10">V = ${V.toFixed(1)}L</text>
+      </svg>
+      `;
+    }
+
+    function updateGasLawSim() {
+      const sV = document.getElementById('sim2-slider-vol');
+      const sT = document.getElementById('sim2-slider-temp');
+
+      let V = parseFloat(sV.value);
+      let T = parseFloat(sT.value);
+      let P = 1.0;
+
+      if (gasLawMode === 'boyle') {
+        // T is constant at 273. V changes via slider. Find P.
+        // P1V1 = P2V2 -> (1.0)(22.4) = P2(V2) => P = 22.4 / V
+        P = 22.4 / V;
+      } else {
+        // Charles: P is constant (say 1 atm). T changes via slider. Find V.
+        // V1/T1 = V2/T2 -> 22.4/273 = V2/T
+        V = (22.4 / 273) * T;
+        sV.value = V; // Move V slider automatically
+        if (V > 50) { V = 50; T = (50 * 273) / 22.4; sT.value = T; } // cap it
+      }
+
+      document.getElementById('lbl-sim2-vol').innerText = `${V.toFixed(1)} L`;
+      document.getElementById('lbl-sim2-temp').innerText = `${T.toFixed(0)} K${gasLawMode === 'boyle' ? ' (คงตัว)' : ''}`;
+      document.getElementById('lbl-sim2-pressure').innerText = `${P.toFixed(2)} atm`;
+
+      drawPistonSVG(V, P, T);
+    }
+
+    function initGasLawSim() {
+      document.getElementById('sim2-slider-vol').oninput = updateGasLawSim;
+      document.getElementById('sim2-slider-temp').oninput = updateGasLawSim;
+      setGasLawMode('boyle');
+    }
+
+    // --- Tab 3 Calculator ---
+    function calculateIdealVolume() {
+      const n = parseFloat(document.getElementById('calc-n').value) || 0;
+      const T = parseFloat(document.getElementById('calc-t').value) || 0;
+      // PV = nRT -> V = nRT/P where R=0.0821 L.atm/mol.K and P=1 atm
+      const V = n * 0.0821 * T;
+      document.getElementById('calc-v-result').innerText = `${V.toFixed(2)} L`;
+    }
+
+    // --- Dynamic Question Templates (16.2 Ideal Gas) ---
+    class SeededRNG {
+      constructor(seedStr) {
+        let hash = 0;
+        for (let i = 0; i < seedStr.length; i++) hash = (hash * 31 + seedStr.charCodeAt(i)) | 0;
+        this.seed = hash || 1;
+      }
+      random() {
+        let t = this.seed += 0x6D2B79F5;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      }
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(this.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+    }
+
+    const QUESTION_TEMPLATES = [
+      // 16.2.1 แบบจำลองแก๊ส
+      {
+        id: '16_2_1_q1', topic: '16.2.1', type: 'choice',
+        title: 'ข้อสมมติฐานของแก๊สอุดมคติ',
+        choices: [
+          'โมเลกุลมีขนาดเล็กมากจนถือว่าไม่มีปริมาตร และไม่มีแรงยึดเหนี่ยวระหว่างกันเลย',
+          'โมเลกุลมีแรงดึงดูดระหว่างกันสูงมากเพื่อรักษาความดันในภาชนะ',
+          'การชนระหว่างโมเลกุลเป็นการชนแบบไม่ยืดหยุ่น ทำให้สูญเสียพลังงานจลน์',
+          'โมเลกุลเคลื่อนที่ด้วยความเร็วคงตัวเป็นเส้นโค้งตามแรงโน้มถ่วงเสมอ'
+        ],
+        text: () => `ข้อใดกล่าวถูกต้องเกี่ยวกับแบบจำลองของแก๊สอุดมคติ (Ideal Gas Model)`,
+        generate: (r) => ({ params: {}, answers: ['โมเลกุลมีขนาดเล็กมากจนถือว่าไม่มีปริมาตร และไม่มีแรงยึดเหนี่ยวระหว่างกันเลย'], answersRaw: [0], explanation: () => `ข้อสมมติฐานแก๊สอุดมคติคือ โมเลกุลมีปริมาตรเป็นศูนย์ ไม่มีแรงดึงดูด/ผลักระหว่างกัน เคลื่อนที่สุ่มเป็นเส้นตรง และชนแบบยืดหยุ่นสมบูรณ์ (ไม่เสียพลังงานจลน์)` })
+      },
+      {
+        id: '16_2_1_q2', topic: '16.2.1', type: 'choice',
+        title: 'สภาวะที่แก๊สจริงใกล้เคียงแก๊สอุดมคติ',
+        choices: [
+          'อุณหภูมิสูง และ ความดันต่ำ',
+          'อุณหภูมิต่ำ และ ความดันสูง',
+          'อุณหภูมิสูง และ ความดันสูง',
+          'อุณหภูมิต่ำ และ ความดันต่ำ'
+        ],
+        text: () => `แก๊สจริงในธรรมชาติ จะมีพฤติกรรมใกล้เคียงกับแก๊สอุดมคติมากที่สุดเมื่ออยู่ในสภาวะใด`,
+        generate: (r) => ({ params: {}, answers: ['อุณหภูมิสูง และ ความดันต่ำ'], answersRaw: [0], explanation: () => `เมื่ออุณหภูมิสูง โมเลกุลจะมีพลังงานจลน์สูงเคลื่อนที่เร็ว และเมื่อความดันต่ำ โมเลกุลจะอยู่ห่างกันมาก ทำให้แรงยึดเหนี่ยวระหว่างโมเลกุลมีผลน้อยมากจนเข้าใกล้ข้อสมมติฐานของแก๊สอุดมคติ` })
+      },
+
+      // 16.2.2 กฎของบอยล์ ชาร์ล เก-ลูซัก
+      {
+        id: '16_2_2_boyle', topic: '16.2.2', type: 'numeric_single',
+        title: 'กฎของบอยล์ (อุณหภูมิคงตัว)',
+        inputs: [{ label: 'ปริมาตรใหม่ V2 (ลิตร):' }],
+        text: (p) => `แก๊สชนิดหนึ่งบรรจุในกระบอกสูบ มีปริมาตร \\(${p.V1}\\text{ L}\\) ที่ความดัน \\(${p.P1}\\text{ atm}\\) ถ้ารักษาอุณหภูมิให้คงตัว แล้วเพิ่มความดันเป็น \\(${p.P2}\\text{ atm}\\) ปริมาตรของแก๊สจะกลายเป็นกี่ลิตร`,
+        generate: (r) => {
+          const V1 = r ? Math.floor(10 + r % 20) : 20;
+          const P1 = r ? 1.0 : 1.5;
+          const P2 = r ? Math.floor(2 + r % 3) : 3.0;
+          const V2 = (P1 * V1) / P2;
+          return { params: { V1, P1, P2 }, answers: [V2.toFixed(1), Math.round(V2).toString()], answersRaw: [V2], explanation: () => `จากกฎของบอยล์ (อุณหภูมิคงตัว): \\( P_1V_1 = P_2V_2 \\) <br> จะได้ \\( (${P1})(${V1}) = (${P2})V_2 \\) <br> \\( V_2 = \\frac{${P1 * V1}}{${P2}} = ${V2.toFixed(2)}\\text{ L} \\)` };
+        }
+      },
+      {
+        id: '16_2_2_charles', topic: '16.2.2', type: 'numeric_single',
+        title: 'กฎของชาร์ล (ความดันคงตัว)',
+        inputs: [{ label: 'ปริมาตรใหม่ V2 (ลิตร):' }],
+        text: (p) => `ลูกโป่งบรรจุแก๊สปริมาตร \\(${p.V1}\\text{ L}\\) ที่อุณหภูมิ \\(${p.t1}^\\circ\\text{C}\\) ถ้านำไปไว้ในที่ที่มีอุณหภูมิ \\(${p.t2}^\\circ\\text{C}\\) โดยความดันบรรยากาศคงตัว ลูกโป่งจะมีปริมาตรกี่ลิตร (ระวังเรื่องหน่วยอุณหภูมิ)`,
+        generate: (r) => {
+          const V1 = r ? Math.floor(2 + r % 5) : 3.0;
+          const t1 = r ? 27 : 27; // easy math T1 = 300K
+          const t2 = r ? 127 : 77; // T2 = 400K or 350K
+          const T1 = t1 + 273;
+          const T2 = t2 + 273;
+          const V2 = (V1 / T1) * T2;
+          return { params: { V1, t1, t2 }, answers: [V2.toFixed(1), V2.toFixed(2)], answersRaw: [V2], explanation: () => `จากกฎของชาร์ล ต้องแปลง T เป็นเคลวินก่อนเสมอ!<br> \\( T_1 = ${t1} + 273 = ${T1}\\text{ K} \\) และ \\( T_2 = ${t2} + 273 = ${T2}\\text{ K} \\) <br> สูตร \\( \\frac{V_1}{T_1} = \\frac{V_2}{T_2} \\) <br> \\( \\frac{${V1}}{${T1}} = \\frac{V_2}{${T2}} \\) <br> \\( V_2 = ${V2.toFixed(2)}\\text{ L} \\)` };
+        }
+      },
+      {
+        id: '16_2_2_combined', topic: '16.2.2', type: 'numeric_single',
+        title: 'กฎรวมแก๊ส (เปลี่ยนทั้ง P,V,T)',
+        inputs: [{ label: 'ความดันใหม่ P2 (atm):' }],
+        text: (p) => `แก๊สจำนวนหนึ่งมีปริมาตร \\(${p.V1}\\text{ L}\\) ความดัน \\(${p.P1}\\text{ atm}\\) ที่อุณหภูมิ \\(300\\text{ K}\\) ถ้าแก๊สขยายตัวจนมีปริมาตรเป็น \\(${p.V2}\\text{ L}\\) และอุณหภูมิเพิ่มเป็น \\(600\\text{ K}\\) ความดันของแก๊สจะเป็นกี่ atm`,
+        generate: (r) => {
+          const V1 = 10, P1 = 2; // PV = 20
+          const V2 = r ? Math.floor(15 + r % 10) : 20; // say 20
+          // P1V1/T1 = P2V2/T2 -> (2)(10)/300 = P2(V2)/600 -> 20/300 = P2*20/600 -> P2 = 2
+          const P2 = (P1 * V1 * 600) / (300 * V2);
+          return { params: { V1, P1, V2 }, answers: [P2.toFixed(1), P2.toString()], answersRaw: [P2], explanation: () => `จากกฎรวมแก๊ส: \\( \\frac{P_1V_1}{T_1} = \\frac{P_2V_2}{T_2} \\) <br> แทนค่า: \\( \\frac{(${P1})(${V1})}{300} = \\frac{P_2(${V2})}{600} \\) <br> \\( P_2 = \\frac{${P1 * V1} \\times 600}{300 \\times ${V2}} = ${P2.toFixed(1)}\\text{ atm} \\)` };
+        }
+      },
+
+      // 16.2.3 สมการแก๊สอุดมคติ PV=nRT
+      {
+        id: '16_2_3_ideal1', topic: '16.2.3', type: 'numeric_single',
+        title: 'คำนวณปริมาตรจาก PV=nRT',
+        inputs: [{ label: 'ปริมาตร V (m³):' }],
+        text: (p) => `แก๊สฮีเลียมจำนวน \\(${p.n}\\text{ mol}\\) บรรจุในถังปิดที่อุณหภูมิ \\(${p.T}\\text{ K}\\) และมีความดัน \\(${p.P_sci}\\text{ N/m}^2\\) แก๊สนี้มีปริมาตรกี่ลูกบาศก์เมตร (กำหนด \\(R = 8.31\\text{ J/(mol K)}\\))`,
+        generate: (r) => {
+          const n = r ? Math.floor(2 + r % 4) : 2;
+          const T = 300;
+          const P = 1.0e5; // 100,000 Pa
+          const V = (n * 8.31 * T) / P;
+          return { params: { n, T, P_sci: "1.0 \\times 10^5" }, answers: [V.toFixed(3), V.toFixed(4)], answersRaw: [V], explanation: () => `จากสมการสถานะแก๊สอุดมคติ: \\( PV = nRT \\) <br> \\( (${formatSci(P)})V = (${n})(8.31)(${T}) \\) <br> \\( V = \\frac{${n * 8.31 * T}}{100000} = ${V.toFixed(3)}\\text{ m}^3 \\)` };
+        }
+      },
+      {
+        id: '16_2_3_ideal2_N', topic: '16.2.3', type: 'numeric_single',
+        title: 'จำนวนโมเลกุลในขวด (PV=NkT)',
+        inputs: [{ label: 'จำนวนโมเลกุล N (ไม่ต้องพิมพ์ 10^22):' }],
+        text: (p) => `ขวดใบหนึ่งมีปริมาตร \\(${p.V}\\times 10^{-3}\\text{ m}^3\\) บรรจุแก๊สที่ความดัน \\(${p.P}\\times 10^5\\text{ Pa}\\) และอุณหภูมิ \\(300\\text{ K}\\) จะมีอนุภาคแก๊สอยู่ประมาณ \\(N \\times 10^{22}\\) โมเลกุล จงหาค่า N (กำหนด \\(k_B = 1.38 \\times 10^{-23}\\text{ J/K}\\))`,
+        generate: (r) => {
+          const V_base = 2.0; // 2L
+          const P_base = 1.0; // 1 atm
+          // PV = NkT -> N = PV/kT = (1e5 * 2e-3) / (1.38e-23 * 300) = 200 / 4.14e-21 = 4.83e22
+          const N_full = (P_base * 1e5 * V_base * 1e-3) / (1.38e-23 * 300);
+          const N_coeff = N_full / 1e22;
+          return { params: { V: V_base, P: P_base }, answers: [N_coeff.toFixed(1), N_coeff.toFixed(2)], answersRaw: [N_coeff], explanation: () => `ใช้สูตร \\( PV = N k_B T \\) (เพราะหาโมเลกุล) <br> \\( N = \\frac{PV}{k_B T} = \\frac{(${P_base}\\times 10^5)(${V_base}\\times 10^{-3})}{(1.38\\times 10^{-23})(300)} \\) <br> \\( N \\approx ${N_coeff.toFixed(2)} \\times 10^{22} \\text{ โมเลกุล}\\)` };
+        }
+      },
+
+      // 16.2.4 การหาจำนวนโมล (เคมี-ฟิสิกส์)
+      {
+        id: '16_2_4_mol_mass', topic: '16.2.4', type: 'numeric_single',
+        title: 'การหามวลของแก๊ส',
+        inputs: [{ label: 'มวล m (กรัม):' }],
+        text: (p) => `แก๊สออกซิเจน (O₂) จำนวน \\(${p.n}\\text{ mol}\\) จะมีมวลกี่กรัม (กำหนดมวลโมเลกุลของ O = 16)`,
+        generate: (r) => {
+          const n = r ? Math.floor(1 + r % 5) : 3;
+          const M_O2 = 32; // g/mol
+          const m_grams = n * M_O2;
+          return { params: { n }, answers: [m_grams.toString()], answersRaw: [m_grams], explanation: () => `มวลโมเลกุล (M) ของ O₂ = 16 + 16 = 32 กรัม/โมล <br> จาก \\( n = \\frac{m}{M} \\) จะได้ \\( m = n \\times M = ${n} \\times 32 = ${m_grams}\\text{ กรัม} \\)` };
+        }
+      },
+
+      // --- คำถามตรวจสอบความเข้าใจ 16.2 ---
+      {
+        id: '16_2_1_q3', topic: '16.2.1', type: 'choice',
+        title: 'คำถามตรวจสอบความเข้าใจ 16.2 - ข้อ 1',
+        choices: [
+          'เพราะโมเลกุลของแก๊สอยู่ห่างกันมากทำให้มีที่ว่างระหว่างโมเลกุลมาก',
+          'เพราะโมเลกุลของแก๊สมีขนาดเล็กและสามารถหดตัวได้เมื่อได้รับแรงดัน',
+          'เพราะแรงดึงดูดระหว่างโมเลกุลของแก๊สเพิ่มขึ้นอย่างรวดเร็วทำให้ดึงดูดกันเข้ามารวมกลุ่ม',
+          'เพราะโมเลกุลของแก๊สมีสมบัติการซึมผ่านขอบเขตภาชนะได้ง่ายเมื่อมีแรงอัด'
+        ],
+        text: () => `แก๊สสามารถถูกบีบอัดให้มีปริมาตรลดลงจากเดิมได้มาก เพราะเหตุใด`,
+        generate: (r) => ({
+          params: {},
+          answers: ['เพราะโมเลกุลของแก๊สอยู่ห่างกันมากทำให้มีที่ว่างระหว่างโมเลกุลมาก'],
+          answersRaw: [0],
+          explanation: () => `ตามสมมติฐานของแก๊สอุดมคติและสมบัติทั่วไปของแก๊ส โมเลกุลของแก๊สจะอยู่ห่างกันมากเมื่อเทียบกับขนาดของโมเลกุล ทำให้มีที่ว่างระหว่างโมเลกุลเหลืออยู่มาก แก๊สจึงสามารถถูกบีบอัดให้มีปริมาตรลดลงจากเดิมได้ง่ายและลดลงได้มาก`
+        })
+      },
+      {
+        id: '16_2_1_q4', topic: '16.2.1', type: 'choice',
+        title: 'คำถามตรวจสอบความเข้าใจ 16.2 - ข้อ 2',
+        choices: [
+          'โมเลกุลมีขนาดเล็กมากจนไม่มีปริมาตร ไม่มีแรงยึดเหนี่ยวระหว่างโมเลกุล เคลื่อนที่แบบสุ่ม และชนแบบยืดหยุ่นสมบูรณ์',
+          'โมเลกุลมีขนาดใหญ่มั่นคง มีแรงยึดเหนี่ยวระหว่างกันเหนียวแน่น และชนกันแบบไม่ยืดหยุ่น',
+          'โมเลกุลไม่เคลื่อนที่เลยจนกว่าอุณหภูมิจะสูงกว่าจุดเดือด',
+          'โมเลกุลเคลื่อนที่เป็นวงกลมรอบศูนย์กลางของภาชนะและมีแรงดึงดูดโน้มถ่วงระหว่างโมเลกุลสูง'
+        ],
+        text: () => `แก๊สอุดมคติมีสมบัติพื้นฐานตามข้อใด`,
+        generate: (r) => ({
+          params: {},
+          answers: ['โมเลกุลมีขนาดเล็กมากจนไม่มีปริมาตร ไม่มีแรงยึดเหนี่ยวระหว่างโมเลกุล เคลื่อนที่แบบสุ่ม และชนแบบยืดหยุ่นสมบูรณ์'],
+          answersRaw: [0],
+          explanation: () => `สมบัติของแก๊สอุดมคติ (Ideal Gas) ได้แก่:<br>1. โมเลกุลมีขนาดเล็กมากจนถือว่าปริมาตรของโมเลกุลเองเป็นศูนย์เมื่อเทียบกับปริมาตรภาชนะ<br>2. ไม่มีแรงยึดเหนี่ยวระหว่างโมเลกุล<br>3. โมเลกุลมีการเคลื่อนที่แบบสุ่ม (Random motion) ในทุกทิศทาง<br>4. การชนระหว่างโมเลกุลหรือชนผนังเป็นการชนแบบยืดหยุ่นสมบูรณ์ (Elastic collision) ไม่มีการสูญเสียพลังงานจลน์รวม`
+        })
+      },
+      {
+        id: '16_2_3_q3', topic: '16.2.3', type: 'choice',
+        title: 'คำถามตรวจสอบความเข้าใจ 16.2 - ข้อ 3',
+        choices: [
+          'มีความสัมพันธ์กันตามกฎของแก๊สอุดมคติ คือ PV = nRT หรือ PV = N kB T',
+          'มีความสัมพันธ์กันตามกฎของชาร์ลเท่านั้น คือ V/T = k เมื่อความดันไม่คงตัว',
+          'มีความสัมพันธ์แบบแปรผันตรงทั้งหมด คือ P = V = T',
+          'ไม่มีความสัมพันธ์ต่อกันเลยเนื่องจากแก๊สเป็นแก๊สอุดมคติที่มีความหนาแน่นต่ำ'
+        ],
+        text: () => `ความดัน ปริมาตร และอุณหภูมิสัมบูรณ์ของแก๊สอุดมคติในภาชนะปิดมีความสัมพันธ์กันหรือไม่ อย่างไร`,
+        generate: (r) => ({
+          params: {},
+          answers: ['มีความสัมพันธ์กันตามกฎของแก๊สอุดมคติ คือ PV = nRT หรือ PV = N kB T'],
+          answersRaw: [0],
+          explanation: () => `ในสภาวะใดๆ ความดัน (P) ปริมาตร (V) และอุณหภูมิสัมบูรณ์ (T) ของแก๊สอุดมคติจำนวนหนึ่ง (n โมล หรือ N โมเลกุล) ในภาชนะปิด มีความสัมพันธ์กันตามสมการสถานะของแก๊สอุดมคติ คือ \\( PV = nRT \\) หรือ \\( PV = N k_B T \\) โดย R คือค่าคงตัวแก๊สสากล และ \\( k_B \\) คือค่าคงตัวโบลตซ์มันน์`
+        })
+      },
+      {
+        id: '16_2_3_q4', topic: '16.2.3', type: 'choice',
+        title: 'คำถามตรวจสอบความเข้าใจ 16.2 - ข้อ 4',
+        choices: [
+          'ไม่สามารถหาความดันของแก๊สได้ เพราะยังไม่ทราบจำนวนโมล (n) หรือจำนวนโมเลกุล (N) ของแก๊สภายในกระบอกสูบแต่ละใบ',
+          'หาได้ โดยความดันในกระบอกสูบแรกจะมีค่าเป็นสองเท่าของกระบอกสูบที่สอง',
+          'หาได้ โดยความดันในกระบอกสูบที่สองจะมีค่าเป็นสองเท่าของกระบอกสูบแรก',
+          'หาได้ โดยความดันของทั้งสองกระบอกสูบจะมีค่าเท่ากันเสมอเนื่องจากมีอุณหภูมิเท่ากัน'
+        ],
+        text: () => `พิจารณากระบอกสูบ 2 กระบอก กระบอกสูบแรกมีปริมาตรเป็นสองเท่าของกระบอกสูบที่สอง ทั้งสองมีอุณหภูมิเท่ากันและบรรจุแก๊สชนิดเดียวกัน จะหาความดันของแก๊สภายในกระบอกสูบทั้งสองได้หรือไม่ เพราะเหตุใด`,
+        generate: (r) => ({
+          params: {},
+          answers: ['ไม่สามารถหาความดันของแก๊สได้ เพราะยังไม่ทราบจำนวนโมล (n) หรือจำนวนโมเลกุล (N) ของแก๊สภายในกระบอกสูบแต่ละใบ'],
+          answersRaw: [0],
+          explanation: () => `จากกฎของแก๊สอุดมคติ (\\( PV = nRT \\) หรือ \\( PV = N k_B T \\)) จะพบว่า แม้เราทราบความสัมพันธ์ของปริมาตร (V) และทราบว่าอุณหภูมิ (T) เท่ากัน แต่ปริมาณแก๊สหรือจำนวนโมล (n) หรือจำนวนโมเลกุล (N) ในกระบอกสูบแต่ละใบอาจแตกต่างกันได้ หากไม่ทราบค่านี้ จะไม่สามารถหาหรือเปรียบเทียบความดัน (P) ที่แน่นอนของแก๊สในกระบอกสูบทั้งสองได้`
+        })
+      },
+
+      // --- เฉลยแบบฝึกหัด 16.2 ---
+      {
+        id: '16_2_2_exercise_1', topic: '16.2.2', type: 'numeric_single',
+        title: 'แบบฝึกหัด 16.2 - ข้อ 1 (ยางรถยนต์)',
+        inputs: [{ label: 'ความดันอากาศตอนหลัง P2 (kPa):' }],
+        text: (p) => `ยางรถยนต์มีความดันอากาศภายในยางรถยนต์ \\(${p.P1}\\text{ kPa}\\) และมีอุณหภูมิ \\(${p.T1}\\text{ K}\\) หลังจากรถเคลื่อนที่ไปได้ 100 กิโลเมตร อุณหภูมิของอากาศในยางรถยนต์เพิ่มขึ้นเป็น \\(${p.T2}\\text{ K}\\) จงหาความดันของอากาศในยางรถยนต์ตอนหลังนี้ (ในหน่วย \\(\\text{kPa}\\)) กำหนดให้ปริมาตรยางคงตัว`,
+        generate: (r) => {
+          const P1 = r ? 180 + (r % 9) * 5 : 200;
+          const T1 = r ? 280 + (r % 5) * 2 : 283;
+          const T2 = r ? 310 + (r % 8) * 3 : 313;
+          const P2 = (P1 * T2) / T1;
+          const P2_rounded = Math.round(P2);
+          return {
+            params: { P1, T1, T2 },
+            answers: [P2_rounded.toString(), P2.toFixed(1), P2.toFixed(2)],
+            answersRaw: [P2],
+            explanation: () => `เนื่องจากปริมาตรยางรถยนต์คงตัว (\\( V_1 = V_2 \\)) จากกฎของแก๊สอุดมคติ:<br>\\( \\frac{P_1V_1}{T_1} = \\frac{P_2V_2}{T_2} \\) <br> จะได้ \\( \\frac{P_1}{T_1} = \\frac{P_2}{T_2} \\) <br> ย้ายข้างเพื่อหาความดันตอนหลัง (\\( P_2 \\)): <br> \\( P_2 = P_1 \\left(\\frac{T_2}{T_1}\\right) \\) <br> แทนค่า: \\( P_2 = ${P1}\\text{ kPa} \\times \\left(\\frac{${T2}\\text{ K}}{${T1}\\text{ K}}\\right) \\approx ${P2.toFixed(2)}\\text{ kPa} \\) (ประมาณ ${P2_rounded} kPa)`
+          };
+        }
+      },
+      {
+        id: '16_2_2_exercise_2a', topic: '16.2.2', type: 'numeric_single',
+        title: 'แบบฝึกหัด 16.2 - ข้อ 2 (ก. ความดันก่อนรั่ว)',
+        inputs: [{ label: 'ความดันก่อนรั่ว P2 (ในหน่วย x 10^5 Pa):' }],
+        text: (p) => `พิจารณาภาชนะที่มีปริมาตรคงตัว บรรจุแก๊สอาร์กอนมีความดัน \\(${p.P1_display}\\text{ Pa}\\) ที่อุณหภูมิ \\(${p.T1}\\text{ K}\\) เมื่อเพิ่มอุณหภูมิของภาชนะเป็น \\(${p.T2}\\text{ K}\\) จงหาความดันของแก๊สอาร์กอนภายในภาชนะก่อนแก๊สรั่ว ในหน่วย \\(\\times 10^5\\text{ Pa}\\) (ตอบเฉพาะสัมประสิทธิ์ตัวเลขข้างหน้า เช่น 4.00 หรือ 4)`,
+        generate: (r) => {
+          const P1_coeff = r ? 2.0 + (r % 4) * 0.5 : 3.0;
+          const T1 = 300;
+          const T2 = r ? 300 + (r % 3 + 1) * 100 : 400;
+          const P2_coeff = P1_coeff * (T2 / T1);
+          return {
+            params: { P1_display: formatSci(P1_coeff * 1e5), T1, T2 },
+            answers: [P2_coeff.toFixed(2), P2_coeff.toFixed(1), P2_coeff.toString()],
+            answersRaw: [P2_coeff],
+            explanation: () => `จากกฎของแก๊สอุดมคติ เมื่อปริมาตรและจำนวนโมลของแก๊สคงตัว (ก่อนแก๊สรั่ว):<br>\\( \\frac{P_1}{T_1} = \\frac{P_2}{T_2} \\) <br> จะได้ \\( P_2 = P_1 \\left(\\frac{T_2}{T_1}\\right) \\) <br> แทนค่า: \\( P_2 = (${P1_coeff.toFixed(2)} \\times 10^5\\text{ Pa}) \\times \\left(\\frac{${T2}\\text{ K}}{${T1}\\text{ K}}\\right) = ${P2_coeff.toFixed(2)} \\times 10^5\\text{ Pa} \\)`
+          };
+        }
+      },
+      {
+        id: '16_2_2_exercise_2b', topic: '16.2.2', type: 'numeric_single',
+        title: 'แบบฝึกหัด 16.2 - ข้อ 2 (ข. ความดันหลังรั่ว)',
+        inputs: [{ label: 'ความดันหลังรั่ว P3 (ในหน่วย x 10^5 Pa):' }],
+        text: (p) => `จากคำถามข้อ ก. (ภาชนะปริมาตรคงตัวบรรจุแก๊สอาร์กอนความดัน \\(${p.P1_display}\\text{ Pa}\\) ที่อุณหภูมิ \\(${p.T1}\\text{ K}\\) เพิ่มอุณหภูมิเป็น \\(${p.T2}\\text{ K}\\)) หากหลังจากเพิ่มอุณหภูมิแล้วมีแก๊สรั่วไหลออกจากภาชนะคิดเป็นร้อยละ \\(${p.leak}\\) ของปริมาณแก๊สเริ่มต้น จงหาความดันสุดท้ายของแก๊สอาร์กอนหลังจากแก๊สรั่วแล้ว ในหน่วย \\(\\times 10^5\\text{ Pa}\\) (ตอบเฉพาะสัมประสิทธิ์ตัวเลขข้างหน้า เช่น 3.20 หรือ 3.2)`,
+        generate: (r) => {
+          const P1_coeff = r ? 2.0 + (r % 4) * 0.5 : 3.0;
+          const T1 = 300;
+          const T2 = r ? 300 + (r % 3 + 1) * 100 : 400;
+          const leak = r ? 10 + (r % 5) * 5 : 20;
+          const P2_coeff = P1_coeff * (T2 / T1);
+          const remain_ratio = 1 - leak / 100;
+          const P3_coeff = P2_coeff * remain_ratio;
+          return {
+            params: { P1_display: formatSci(P1_coeff * 1e5), T1, T2, leak },
+            answers: [P3_coeff.toFixed(2), P3_coeff.toFixed(1), P3_coeff.toString()],
+            answersRaw: [P3_coeff],
+            explanation: () => `หลังจากแก๊สรั่วไหล ปริมาตร V และอุณหภูมิ T ยังคงที่เท่าเดิมที่ \\(${T2}\\text{ K}\\) แต่จำนวนโมลของแก๊สในระบบลดลงเหลือ \\(${100 - leak}\\%\\) ของปริมาณเริ่มต้น (นั่นคือ \\( n_3 = ${remain_ratio.toFixed(2)} n_2 \\))<br>จากความสัมพันธ์ของกฎของแก๊สอุดมคติที่ปริมาตรและอุณหภูมิคงตัว ความดันจะแปรผันตรงกับจำนวนโมล:<br>\\( \\frac{P_2}{n_2} = \\frac{P_3}{n_3} \\) <br> จะได้ \\( P_3 = P_2 \\left(\\frac{n_3}{n_2}\\right) = P_2 \\times ${remain_ratio.toFixed(2)} \\) <br> แทนค่าความดันก่อนรั่วจากข้อ ก. (\\( P_2 = ${P2_coeff.toFixed(2)} \\times 10^5\\text{ Pa} \\)): <br> \\( P_3 = (${P2_coeff.toFixed(2)} \\times 10^5\\text{ Pa}) \\times ${remain_ratio.toFixed(2)} = ${P3_coeff.toFixed(2)} \\times 10^5\\text{ Pa} \\)`
+          };
+        }
+      }
+    ];
+
+    // --- Practice Engine ---
+    function startPracticeMode(topic) {
+      currentPracticeTopic = topic;
+      document.getElementById('practice-arena').classList.remove('hidden');
+      ['16-2-1', '16-2-2', '16-2-3', '16-2-4'].forEach(t => {
+        const btn = document.getElementById(`btn-prac-${t}`);
+        if (btn) btn.className = t === topic
+          ? "p-4 bg-indigo-50 border-2 border-indigo-500 text-indigo-900 rounded-xl flex items-center gap-4 transition text-left shadow-sm"
+          : "p-4 bg-white hover:bg-slate-50 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-4 transition text-left shadow-sm";
+      });
+      document.getElementById('prac-feedback').classList.add('hidden');
+      document.getElementById('prac-explanation-box').classList.add('hidden');
+      regeneratePractice();
+    }
+
+    function regeneratePractice() {
+      const mode = document.getElementById('prac-type-select').value;
+      const isRandom = mode === 'random';
+
+      const formattedTopic = currentPracticeTopic.replace(/-/g, '.');
+      const filtered = QUESTION_TEMPLATES.filter(q => q.topic.startsWith(formattedTopic));
+
+      if (!filtered.length) return;
+      const template = filtered[Math.floor(Math.random() * filtered.length)];
+
+      const R = isRandom ? Math.floor(Math.random() * 50) + 1 : null;
+      const instance = template.generate(R);
+
+      currentPracticeQuestion = { template, instance };
+      document.getElementById('prac-badge-mode').innerText = `หัวข้อ ${template.topic} • ${isRandom ? 'โหมดสุ่มตัวเลข' : 'โจทย์อ้างอิงมาตรฐาน'}`;
+      document.getElementById('prac-question-title').innerText = `📋 โจทย์: ${template.title}`;
+      document.getElementById('prac-question-text').innerHTML = template.text(instance.params);
+
+      const cz = document.getElementById('prac-choice-zone'), nz = document.getElementById('prac-numeric-zone');
+      document.getElementById('prac-input-val1').value = '';
+      document.getElementById('prac-input-val2').value = '';
+      document.getElementById('prac-input-zone-2').classList.add('hidden');
+      document.getElementById('prac-feedback').classList.add('hidden');
+      document.getElementById('prac-explanation-box').classList.add('hidden');
+
+      if (template.type === 'choice') {
+        cz.classList.remove('hidden'); nz.classList.add('hidden');
+        cz.innerHTML = template.choices.map(c => `<button onclick="checkPracticeChoice('${c}')" class="w-full text-left px-5 py-3 bg-white hover:bg-indigo-50 text-slate-800 font-medium rounded-xl border border-slate-200 hover:border-indigo-300 transition">${c}</button>`).join('');
+      } else {
+        cz.classList.add('hidden'); nz.classList.remove('hidden');
+        document.getElementById('lbl-prac-input-1').innerText = template.inputs[0].label;
+        if (template.type === 'numeric_double') {
+          document.getElementById('prac-input-zone-2').classList.remove('hidden');
+          document.getElementById('lbl-prac-input-2').innerText = template.inputs[1].label;
+        }
+      }
+      renderMath();
+    }
+
+    function checkPracticeAnswer() {
+      if (!currentPracticeQuestion) return;
+      const { template, instance } = currentPracticeQuestion;
+      if (template.type === 'choice') return;
+
+      const v1 = document.getElementById('prac-input-val1').value.trim();
+      const v2 = document.getElementById('prac-input-val2').value.trim();
+
+      if (!v1 || (template.type === 'numeric_double' && !v2)) {
+        triggerAlert("กรอกไม่ครบ", "ระบุคำตอบให้ครบก่อนตรวจครับ", "fa-circle-question", "bg-amber-100 text-amber-600");
+        return;
+      }
+
+      const c1 = isNumericAnswerCorrect(v1, instance.answersRaw[0]);
+      const c2 = template.type === 'numeric_double' ? isNumericAnswerCorrect(v2, instance.answersRaw[1]) : true;
+      showPracticeFeedback(c1 && c2, instance.explanation());
+    }
+
+    function checkPracticeChoice(choice) {
+      if (!currentPracticeQuestion) return;
+      const { instance } = currentPracticeQuestion;
+      showPracticeFeedback(choice === instance.answers[0], instance.explanation());
+    }
+
+    function showPracticeFeedback(isCorrect, explainText) {
+      const fb = document.getElementById('prac-feedback');
+      fb.className = `p-5 rounded-2xl border block ${isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800'}`;
+      fb.innerHTML = isCorrect
+        ? `<div class="font-bold flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i> ยอดเยี่ยม! ตอบถูกต้องตามหลักฟิสิกส์</div>`
+        : `<div class="font-bold flex items-center gap-2"><i class="fa-solid fa-circle-xmark text-rose-500 text-lg"></i> คำตอบยังไม่ถูก ลองศึกษาเฉลยด้านล่างดูนะครับ</div>`;
+      document.getElementById('prac-explanation-text').innerHTML = explainText;
+      document.getElementById('prac-explanation-box').classList.remove('hidden');
+      renderMath();
+    }
+
+    // --- Exam Engine ---
+    function startExamProcess() {
+      const name = document.getElementById('exam-student-name').value.trim();
+      const cls = document.getElementById('exam-student-class').value;
+      const num = document.getElementById('exam-student-no').value.trim();
+      const R = parseInt(num);
+      if (!name || !cls || isNaN(R) || R < 1 || R > 40) {
+        triggerAlert("ข้อมูลไม่ครบถ้วน", "กรุณาระบุ ชื่อ ชั้นเรียน และเลขที่ (1-40) ให้ถูกต้องก่อนเริ่มสอบครับ", "fa-user", "bg-indigo-100 text-indigo-600");
+        return;
+      }
+
+      examDurationSeconds = (parseInt(document.getElementById('exam-duration-minutes').value) || 10) * 60;
+      examStudentInfo = { name, class: cls, number: num };
+
+      // Seeded RNG to ensure same student gets same questions
+      const examRNG = new SeededRNG(num);
+
+      // Select exactly 5 questions from different topics to ensure complete coverage:
+      // - 1 question from 16.2.1 (Theory / Choice)
+      // - 2 questions from 16.2.2 (Gas Laws / Numeric)
+      // - 1 question from 16.2.3 (Ideal Gas Law / Numeric)
+      // - 1 question from 16.2.4 (Moles / Numeric)
+      const q16_2_1 = QUESTION_TEMPLATES.filter(q => q.topic === '16.2.1');
+      const q16_2_2 = QUESTION_TEMPLATES.filter(q => q.topic === '16.2.2');
+      const q16_2_3 = QUESTION_TEMPLATES.filter(q => q.topic === '16.2.3');
+      const q16_2_4 = QUESTION_TEMPLATES.filter(q => q.topic === '16.2.4');
+
+      const shuffled_1 = examRNG.shuffle(q16_2_1);
+      const shuffled_2 = examRNG.shuffle(q16_2_2);
+      const shuffled_3 = examRNG.shuffle(q16_2_3);
+      const shuffled_4 = examRNG.shuffle(q16_2_4);
+
+      const selectedTemplates = [
+        shuffled_1[0],
+        shuffled_2[0], shuffled_2[1],
+        shuffled_3[0],
+        shuffled_4[0]
+      ];
+
+      currentExamQuestions = selectedTemplates.map(template => {
+        const instance = template.generate(R);
+        return {
+          id: template.id, topic: template.topic, type: template.type, title: template.title,
+          text: template.text(instance.params), inputs: template.inputs || [], choices: template.choices || []
+        };
+      });
+
+      document.getElementById('lbl-exam-user-info').innerText = `${name} (ม.6/${cls} เลขที่ ${num})`;
+      renderExamLiveDOM();
+
+      examStartTimestamp = Date.now();
+      examDeadlineTimestamp = examStartTimestamp + (examDurationSeconds * 1000);
+      examTimeRemaining = examDurationSeconds;
+      examIsActive = true;
+      examSubmissionInProgress = false;
+
+      sessionStorage.setItem(EXAM_STATE_KEY, JSON.stringify({
+        examQuestions: currentExamQuestions, studentInfo: examStudentInfo, examStartTimestamp, examDeadlineTimestamp, examDurationSeconds
+      }));
+
+      setupExamLocks();
+      showSection('exam-live');
+      startExamTimer();
+    }
+
+    function setupExamLocks() {
+      examExitGuardEnabled = true;
+      document.body.classList.add('exam-locked');
+      window.addEventListener('beforeunload', handleExamBeforeUnload);
+    }
+    function releaseExamLocks() {
+      examExitGuardEnabled = false;
+      document.body.classList.remove('exam-locked');
+      window.removeEventListener('beforeunload', handleExamBeforeUnload);
+    }
+    function handleExamBeforeUnload(e) { if (examIsActive) { e.preventDefault(); e.returnValue = ''; } }
+
+    function renderExamLiveDOM() {
+      const container = document.getElementById('exam-questions-container');
+      container.innerHTML = '';
+      currentExamQuestions.forEach((q, idx) => {
+        let inputHTML = '';
+        if (q.type === 'choice') {
+          inputHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">`;
+          q.choices.forEach((c, cIdx) => {
+            inputHTML += `<label class="flex items-center gap-3 bg-slate-50 border border-slate-200 hover:bg-slate-100 p-4 rounded-xl cursor-pointer transition">
+              <input type="radio" name="exam-q${idx}" value="${c}" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+              <span class="text-sm text-slate-800">${c}</span>
+            </label>`;
+          });
+          inputHTML += `</div>`;
+        } else if (q.type === 'numeric_single') {
+          inputHTML += `<div class="mt-4"><label class="block text-xs font-bold text-slate-500 mb-1">${q.inputs[0].label}</label>
+            <input type="text" id="exam-q${idx}-val1" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none font-mono text-sm"></div>`;
+        }
+        container.innerHTML += `<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+            <span class="font-bold text-slate-800">ข้อที่ ${idx + 1}: ${q.title}</span>
+            <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-md text-xs font-bold">2 คะแนน</span>
+          </div>
+          <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium math-font">${q.text}</p>
+          ${inputHTML}
+        </div>`;
+      });
+      renderMath();
+    }
+
+    function startExamTimer() {
+      clearInterval(examTimerInterval);
+      examTimerInterval = setInterval(() => {
+        if (!examIsActive) return;
+        examTimeRemaining = Math.max(0, Math.ceil((examDeadlineTimestamp - Date.now()) / 1000));
+        document.getElementById('exam-timer-display').innerText = formatExamTime(examTimeRemaining);
+        if (examTimeRemaining < 60) document.getElementById('exam-timer-display').classList.add('text-rose-400');
+
+        if (examTimeRemaining <= 0) {
+          clearInterval(examTimerInterval);
+          triggerAlert("หมดเวลาสอบ", "ระบบกำลังส่งข้อสอบอัตโนมัติ", "fa-clock", "bg-rose-100 text-rose-600");
+          submitExam(true);
+        }
+      }, 500);
+    }
+
+    function getExamAnswers() {
+      return currentExamQuestions.map((q, idx) => {
+        if (q.type === 'choice') {
+          const chk = document.querySelector(`input[name="exam-q${idx}"]:checked`);
+          return chk ? chk.value : null;
+        } else if (q.type === 'numeric_single') {
+          return [document.getElementById(`exam-q${idx}-val1`).value];
+        }
+        return null;
+      });
+    }
+
+    function confirmSubmitExam() {
+      const answers = getExamAnswers();
+      const uncomplete = answers.some(a => !a || (Array.isArray(a) && !a[0].trim()));
+      const msg = uncomplete ? "คุณยังทำข้อสอบไม่ครบทุกข้อ ยืนยันที่จะส่งข้อสอบเลยหรือไม่?" : "คุณทำข้อสอบครบแล้ว ยืนยันต้องการส่งข้อสอบหรือไม่?";
+
+      const m = document.getElementById('modal-confirm');
+      const c = document.getElementById('modal-confirm-card');
+      document.getElementById('modal-confirm-msg').innerText = msg;
+
+      m.classList.remove('hidden');
+      setTimeout(() => { c.classList.remove('scale-95', 'opacity-0'); }, 10);
+    }
+
+    function closeConfirmModal() {
+      const m = document.getElementById('modal-confirm');
+      const c = document.getElementById('modal-confirm-card');
+      c.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); }, 200);
+    }
+
+    function executeSubmitExam() {
+      closeConfirmModal();
+      setTimeout(() => submitExam(), 200); // รอให้ Modal ปิดลงก่อนเริ่มคำนวณผล
+    }
+
+    function submitExam(timeExpired = false) {
+      if (examSubmissionInProgress) return;
+      examSubmissionInProgress = true;
+      examIsActive = false;
+      clearInterval(examTimerInterval);
+      releaseExamLocks();
+
+      const answers = getExamAnswers();
+      let total_score = 0;
+      const gradedResults = [];
+      const R = parseInt(examStudentInfo.number) || 1;
+
+      currentExamQuestions.forEach((q, idx) => {
+        const userAns = answers[idx];
+        const template = QUESTION_TEMPLATES.find(t => t.id === q.id);
+        const dynamicCalc = template.generate(R);
+
+        let isCorrect = false;
+        if (q.type === 'choice') isCorrect = userAns === dynamicCalc.answers[0];
+        else if (q.type === 'numeric_single') isCorrect = userAns && isNumericAnswerCorrect(userAns[0], dynamicCalc.answersRaw[0]);
+
+        const score = isCorrect ? 2.0 : 0.0;
+        total_score += score;
+        gradedResults.push({
+          idx, isCorrect, score, userAns,
+          expectedAnswers: dynamicCalc.answers,
+          explanationText: dynamicCalc.explanation()
+        });
+      });
+
+      const elapsed = timeExpired ? examDurationSeconds : (examDurationSeconds - examTimeRemaining);
+      const timeStr = `${Math.floor(elapsed / 60)} นาที ${elapsed % 60} วินาที`;
+
+      const payload = {
+        score: total_score, timeTaken: timeStr, studentInfo: examStudentInfo,
+        gradedResults, examQuestions: currentExamQuestions, date: new Date().toLocaleDateString('th-TH')
+      };
+      localStorage.setItem('last_exam_results_16_2', JSON.stringify(payload));
+      sessionStorage.removeItem(EXAM_STATE_KEY);
+
+      updateLatestScore();
+      showSection('exam-result');
+      renderExamResults(payload);
+    }
+
+    function renderExamResults(data) {
+      document.getElementById('lbl-res-student-name').innerText = data.studentInfo.name;
+      document.getElementById('lbl-res-student-meta').innerText = `ม.6/${data.studentInfo.class} เลขที่ ${data.studentInfo.number}`;
+      document.getElementById('lbl-res-time-elapsed').innerText = data.timeTaken;
+      document.getElementById('lbl-res-finished-at').innerText = data.date;
+
+      document.getElementById('lbl-res-total-score').innerText = data.score;
+      const circle = document.getElementById('res-circle-progress');
+      circle.style.strokeDashoffset = 439.8 - (data.score / 10) * 439.8;
+
+      const fb = document.getElementById('lbl-res-badge-feedback');
+      if (data.score >= 8) fb.innerHTML = `<span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> ยอดเยี่ยม! เข้าใจเรื่องแก๊สอุดมคติได้ดีมาก</span>`;
+      else if (data.score >= 5) fb.innerHTML = `<span class="text-indigo-600 font-bold"><i class="fa-solid fa-thumbs-up"></i> ดี! ผ่านเกณฑ์ ลองดูเฉลยเพื่อเก็บรายละเอียดเพิ่มนะ</span>`;
+      else fb.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-book"></i> พยายามอีกนิด กลับไปทบทวนกฎของบอยล์และชาร์ลเพิ่มนะครับ</span>`;
+
+      const tbody = document.getElementById('exam-result-tbody');
+      const sols = document.getElementById('exam-solutions-container');
+      tbody.innerHTML = ''; sols.innerHTML = '';
+
+      data.gradedResults.forEach((grad, i) => {
+        const q = data.examQuestions[i];
+        const status = grad.isCorrect
+          ? `<span class="text-emerald-500 font-bold"><i class="fa-solid fa-check"></i> 2.0</span>`
+          : `<span class="text-rose-500 font-bold"><i class="fa-solid fa-xmark"></i> 0.0</span>`;
+
+        tbody.innerHTML += `<tr class="bg-white">
+          <td class="px-5 py-3 font-medium text-center">${i + 1}</td>
+          <td class="px-5 py-3 text-slate-700">${q.title}</td>
+          <td class="px-5 py-3 text-center">2.0</td>
+          <td class="px-5 py-3 text-center">${status}</td>
+        </tr>`;
+
+        let uAns = 'ไม่ได้ตอบ';
+        if (q.type === 'choice') uAns = grad.userAns || uAns;
+        else if (grad.userAns && grad.userAns[0]) uAns = grad.userAns[0];
+
+        sols.innerHTML += `<div class="bg-white p-5 rounded-xl border border-slate-200">
+          <h5 class="font-bold text-slate-800 mb-2">ข้อ ${i + 1}: ${q.title}</h5>
+          <p class="text-sm text-slate-600 mb-3 math-font">${q.text}</p>
+          <div class="text-xs bg-slate-50 p-3 rounded-lg border border-slate-100 mb-3">
+            <p>คำตอบของคุณ: <span class="font-bold ${grad.isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${uAns}</span></p>
+            <p>เฉลยที่ถูกต้อง: <span class="font-bold text-slate-800">${grad.expectedAnswers.join(' หรือ ')}</span></p>
+          </div>
+          <div class="text-xs text-slate-700 bg-sky-50/50 p-3 rounded-lg math-font border border-sky-100">${grad.explanationText}</div>
+        </div>`;
+      });
+      renderMath();
+    }
+
+    function toggleExamSolutionBox() {
+      const box = document.getElementById('exam-solution-box');
+      const icon = document.getElementById('icon-toggle-sol');
+      box.classList.toggle('hidden');
+      icon.className = box.classList.contains('hidden') ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-up";
+    }
+
+    function updateLatestScore() {
+      const saved = localStorage.getItem('last_exam_results_16_2');
+      const badge = document.getElementById('latest-score-badge');
+      if (saved) {
+        const data = JSON.parse(saved);
+        document.getElementById('lbl-last-score').innerText = `${data.score}/10 (${data.studentInfo.name})`;
+        badge.classList.remove('hidden');
+      }
+    }
+
+    function showLatestResultModal() {
+      const saved = localStorage.getItem('last_exam_results_16_2');
+      if (saved) {
+        showSection('exam-result');
+        renderExamResults(JSON.parse(saved));
+      }
+    }
+
+    // --- On Load Init ---
+    window.onload = () => {
+      updateLatestScore();
+      switchReviewTab('16-2-1');
+      renderMath();
+
+      // Auto restore if crashed/refreshed during exam
+      const activeSession = sessionStorage.getItem(EXAM_STATE_KEY);
+      if (activeSession) {
+        try {
+          const s = JSON.parse(activeSession);
+          if (s.examDeadlineTimestamp > Date.now()) {
+            currentExamQuestions = s.examQuestions;
+            examStudentInfo = s.studentInfo;
+            examDeadlineTimestamp = s.examDeadlineTimestamp;
+            examDurationSeconds = s.examDurationSeconds;
+            examIsActive = true;
+            document.getElementById('lbl-exam-user-info').innerText = `${s.studentInfo.name} (ม.6/${s.studentInfo.class})`;
+            renderExamLiveDOM();
+            setupExamLocks();
+            showSection('exam-live');
+            startExamTimer();
+          } else {
+            sessionStorage.removeItem(EXAM_STATE_KEY);
+          }
+        } catch (e) { sessionStorage.removeItem(EXAM_STATE_KEY); }
+      }
+    };
+  </script>
+</body>
+
+</html>
