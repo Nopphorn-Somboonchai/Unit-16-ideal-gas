@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ฟิสิกส์ ม.6: บทที่ 16 เรื่องความร้อนและแก๊ส 💨🎈</title>
+  <title>ฟิสิกส์ ม.6: บทที่ 16.2 แก๊สอุดมคติ 💨🎈</title>
   <!-- Production Tailwind CSS build via CDN for standalone usage -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Prompt & Sarabun -->
@@ -39,6 +39,19 @@
       --sky: #0ea5e9;
       --sun: #f59e0b;
       --coral: #ef4444;
+      --success: #2857a7;
+      /* สีเขียวสำหรับข้อสอบ */
+    }
+
+    .total-questions-badge {
+      display: inline-block;
+      background-color: var(--success);
+      color: #fff;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 0.9em;
     }
 
     body {
@@ -108,8 +121,8 @@
           <i class="fa-solid fa-wind"></i>
         </div>
         <div>
-          <h1 class="text-xl md:text-2xl font-bold tracking-wide text-white drop-shadow-md">ฟิสิกส์ ม.6
-            บทที่ 16 เรื่องความร้อนและแก๊ส</h1>
+          <h1 class="text-xl md:text-2xl font-bold tracking-wide text-white drop-shadow-md">ฟิสิกส์ ม.6 บทที่ 16
+            เรื่องความร้อนและแก๊ส</h1>
           <p class="text-xs md:text-sm text-sky-200">รายวิชา ฟิสิกส์ 5 รหัสวิชา ว33205 โรงเรียนห้องสอนศึกษา
             ในพระอุปถัมภ์ฯ</p>
         </div>
@@ -870,6 +883,9 @@
       </div>
 
       <!-- Mode Selector -->
+      <div id="total-questions-display" class="total-questions-badge">
+        ข้อสอบในคลัง : <span id="total-count">0</span> ข้อ
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <button onclick="startPracticeMode('16-2-1')" id="btn-prac-16-2-1"
           class="p-4 bg-white hover:bg-sky-50 text-slate-800 rounded-xl border border-slate-200 flex items-center gap-4 transition text-left shadow-sm hover:shadow">
@@ -2228,6 +2244,11 @@
           }
         } catch (e) { sessionStorage.removeItem(EXAM_STATE_KEY); }
       }
+
+      // นับจำนวนโจทย์ทั้งหมดใน array QUESTION_TEMPLATES
+      const totalQuestions = QUESTION_TEMPLATES.length;
+      // อัปเดตตัวเลขไปยัง HTML
+      document.getElementById('total-count').innerText = totalQuestions;
     };
   </script>
 </body>
